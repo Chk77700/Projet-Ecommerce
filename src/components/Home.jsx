@@ -44,7 +44,7 @@ export default class Home extends React.Component {
                 <Row>
                     <Col lg={2} sm={0}/>
                     <Col lg={8} sm={12}>
-                        {this.state.showDevis && <Devis/>}
+                        {this.state.showDevis && <Devis refresh={this.refreshPanier}/>}
                         {this.state.showBoutiques && <Boutiques refresh={this.refreshPanier}/>}
                         {this.state.showPanier && <Panier refresh={this.refreshPanier}/>}
                     </Col>

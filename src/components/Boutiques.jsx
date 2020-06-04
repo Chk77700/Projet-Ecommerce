@@ -31,52 +31,61 @@ export default class Boutiques extends React.Component {
     render() {
         return (
             <Container>
+                <Row>
+                    {
+                        this.state.showBoutiques && this.state.boutiques.map((x, i) => (
+                            <>
+                                <Col lg={4} sm={12} md={6}>
+                                    <Card key={i} style={style.boutique} onClick={(e) => this.changeShop(e, i)}>
+                                        <Card.Img value={i} variant="top" src={x.photo}/>
+                                        <Card.Body>
+                                            <Card.Text className="text-ecommerce2">
+                                                <h3>{x.name}</h3>
+                                                <h5>
+                                                    {x.covid && <Badge variant={"ecommerce1"}>Covid</Badge>}
+                                                    {x.urgences && <Badge variant={"ecommerce1"}>Urgences</Badge>}
+                                                </h5>
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                                    <br/>
+                                </Col>
+                            </>
+                        ))
+                    }
+                </Row>
                 {
-                    this.state.showBoutiques && this.state.boutiques.map((x, i) => (
-                        <>
-                            <Card key={i} style={style.boutique} onClick={(e) => this.changeShop(e, i)}>
-                                <Card.Img value={i} variant="top" src={x.photo}/>
-                                <Card.Body>
-                                    <Card.Text className="text-ecommerce2">
-                                        <h3>{x.name}</h3>
-                                        <h5>
-                                            {x.covid && <Badge variant={"ecommerce1"}>Covid</Badge>}
-                                            {x.urgences && <Badge variant={"ecommerce1"}>Urgences</Badge>}
-                                        </h5>
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <br/>
-                        </>
-                    ))
-                }
-                {
-                    this.state.showBoutique && this.state.boutiques[this.state.key].articles.map((x, i) => (
-                        <>
-                            <Card key={i}>
-                                <Card.Img style={style.boutique} variant="top" src={x.photo}/>
-                                <Card.Body>
-                                    <Card.Text className="text-ecommerce1">
-                                        <h3 className="text-ecommerce2">{x.name}</h3>
-                                        {x.description}
-                                    </Card.Text>
-                                </Card.Body>
-                                <Card.Footer>
-                                    <Row>
-                                        <Col>
-                                            <h4>{`${x.price}€`}</h4>
-                                        </Col>
-                                        <Col>
-                                            <Button value={i} variant={"ecommerce3"} onClick={this.addPanier}>Ajouter au
-                                                panier
-                                            </Button>
-                                        </Col>
-                                    </Row>
-                                </Card.Footer>
-                            </Card>
-                            <br/>
-                        </>
-                    ))
+                    this.state.showBoutique && <Row>
+                        {this.state.boutiques[this.state.key].articles.map((x, i) => (
+                            <>
+                                <Col lg={4} sm={12} md={6}>
+                                    <Card key={i}>
+                                        <Card.Img style={style.boutique} variant="top" src={x.photo}/>
+                                        <Card.Body>
+                                            <Card.Text className="text-ecommerce1">
+                                                <h3 className="text-ecommerce2">{x.name}</h3>
+                                                {x.description}
+                                            </Card.Text>
+                                        </Card.Body>
+                                        <Card.Footer>
+                                            <Row>
+                                                <Col>
+                                                    <h4>{`${x.price}€`}</h4>
+                                                </Col>
+                                                <Col>
+                                                    <Button value={i} variant={"ecommerce3"} onClick={this.addPanier}>Ajouter
+                                                        au
+                                                        panier
+                                                    </Button>
+                                                </Col>
+                                            </Row>
+                                        </Card.Footer>
+                                    </Card>
+                                    <br/>
+                                </Col>
+                            </>
+                        ))}
+                    </Row>
                 }
             </Container>
         )
@@ -95,7 +104,25 @@ const articles = [
         price: 15,
         description: "Sin autem ad adulescentiam perduxissent, dirimi tamen interdum",
         photo: "https://fc03.deviantart.net/fs71/f/2014/104/f/3/dark_future_warrior_3d_printed_action_figure_by_hauke3000-d7eg1n9.jpg"
-    }
+    },
+    {
+        name: "Visiere",
+        price: 5,
+        description: "Sin autem ad adulescentiam perduxissent, dirimi tamen interdum",
+        photo: "https://ville-nogentsurmarne.com/wp-content/uploads/2020/04/9ba782ae4cc816061dc8ba40938a0a58.jpg"
+    },
+    {
+        name: "Porte crayons",
+        price: 7,
+        description: "Sin autem ad adulescentiam perduxissent, dirimi tamen interdum",
+        photo: "https://lh3.googleusercontent.com/proxy/mZlGZZpC_-kgy6qarohKxwUvEstmzhFC3iIO-fZApL-To9sGXdtmFsEgdWwFr4a3qnUiO9cTTNitBE-f"
+    },
+    {
+        name: "Support telephone",
+        price: 11,
+        description: "Sin autem ad adulescentiam perduxissent, dirimi tamen interdum",
+        photo: "https://i.etsystatic.com/17285982/r/il/7ce614/1823017499/il_570xN.1823017499_pur9.jpg"
+    },
 ];
 
 const test = [

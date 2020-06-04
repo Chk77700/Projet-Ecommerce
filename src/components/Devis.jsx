@@ -24,7 +24,8 @@ export default class Devis extends React.Component {
                 "#ccff00": 1.5
             },
             coeffDevis: 1,
-            click: false
+            click: false,
+            comment: "Aucun commentaire"
         }
     }
 
@@ -40,7 +41,7 @@ export default class Devis extends React.Component {
             color: e.target.value,
             coeffDevis: this.state.coeff[e.target.value]
         });
-        if(this.state.click)
+        if (this.state.click)
             this.showDevis();
     }
 
@@ -50,6 +51,19 @@ export default class Devis extends React.Component {
             price: 15.00 * this.state.coeffDevis,
             click: true
         })
+    }
+
+    addPanier = (e) => {
+        let article = {
+            name: "Article personalise",
+            price: this.state.price,
+            description: this.state.comment,
+            photo: "https://specials-images.forbesimg.com/imageserve/1140075616/960x0.jpg?fit=scale"
+        };
+        let panier = JSON.parse(localStorage.getItem("panier"));
+        panier === null ? panier = [article] : panier.push(article);
+        localStorage.setItem("panier", JSON.stringify(panier));
+        this.props.refresh();
     }
 
     render() {
@@ -90,9 +104,16 @@ export default class Devis extends React.Component {
                                 </>
                             }
                             {
-                                this.state.devis && <h2>
-                                    {`${this.state.price}€`}
-                                </h2>
+                                this.state.devis && <>
+                                    <h2>{`${this.state.price}€`}</h2>
+                                    <Form>
+                                        <Form.Group>
+                                            <Form.Label>Commentaire (facultatif)</Form.Label>
+                                            <Form.Control as="textarea" rows="3" onChange={val => this.setState({comment: val.target.value})}/>
+                                        </Form.Group>
+                                    </Form>
+                                    <Button variant={"ecommerce3"} onClick={this.addPanier}>Valider</Button>
+                                </>
                             }
                         </Form.Group>
                     </Form>
