@@ -26,32 +26,36 @@ export default class Panier extends React.Component {
 
     render() {
         return (
-            this.state.panier.map((x, i) => (
-                <>
-                    <Card key={i}>
-                        <Card.Img style={style.boutique} variant="top" src={x.photo}/>
-                        <Card.Body>
-                            <Card.Text className="text-ecommerce1">
-                                <h3 className="text-ecommerce2">{x.name}</h3>
-                                {x.description}
-                            </Card.Text>
-                        </Card.Body>
-                        <Card.Footer>
-                            <Row>
-                                <Col>
-                                    <h4>{`${x.price}€`}</h4>
-                                </Col>
-                                <Col>
-                                    <Button value={i} variant={"danger"} onClick={this.deletePanier}>
-                                        Supprimer
-                                    </Button>
-                                </Col>
-                            </Row>
-                        </Card.Footer>
-                    </Card>
-                    <br/>
-                </>
-            ))
+            <Row>
+                {this.state.panier.map((x, i) => (
+                    <>
+                        <Col lg={4} sm={12} md={6}>
+                            <Card bg={"light"} key={i}>
+                                <Card.Img style={style.boutique} variant="top" src={x.photo}/>
+                                <Card.Body>
+                                    <Card.Text className="text-ecommerce1">
+                                        <h3 className="text-ecommerce2">{x.name}</h3>
+                                        {x.description}
+                                    </Card.Text>
+                                </Card.Body>
+                                <Card.Footer>
+                                    <Row>
+                                        <Col>
+                                            <h4>{`${x.price}€`}</h4>
+                                        </Col>
+                                        <Col>
+                                            <Button value={i} variant={"danger"} onClick={this.deletePanier}>
+                                                Supprimer
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                </Card.Footer>
+                            </Card>
+                            <br/>
+                        </Col>
+                    </>
+                ))}
+            </Row>
         )
     }
 }

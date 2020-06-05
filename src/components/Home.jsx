@@ -25,11 +25,11 @@ export default class Home extends React.Component {
         this.setState({showDevis: true, showBoutiques: null, showPanier: null})
     }
 
-    showBoutiques= () => {
+    showBoutiques = () => {
         this.setState({showDevis: null, showBoutiques: true, showPanier: null})
     }
 
-    showPanier= () => {
+    showPanier = () => {
         this.setState({showDevis: null, showBoutiques: null, showPanier: true})
     }
 
@@ -40,7 +40,8 @@ export default class Home extends React.Component {
     render() {
         return (
             <div style={{fontFamily: "Oswald"}}>
-                <Header taille={this.state.taillePanier} showBoutiques={this.showBoutiques} showDevis={this.showDevis} showPanier={this.showPanier}/>
+                <Header taille={this.state.taillePanier} showBoutiques={this.showBoutiques}
+                        showDevis={this.showDevis} showPanier={this.showPanier}/>
                 <Row>
                     <Col lg={2} sm={0}/>
                     <Col lg={8} sm={12}>
