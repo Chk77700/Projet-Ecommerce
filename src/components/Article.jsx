@@ -62,9 +62,16 @@ export default class Article extends React.Component {
                                             <h4>{`${x.price}€`}</h4>
                                         </Col>
                                         <Col>
-                                            <Button value={i} variant={"ecommerce3"} onClick={this.addPanier}>
-                                                Ajouter au panier
-                                            </Button>
+                                            {
+                                                x.stock > 0 && <Button value={i} variant={"ecommerce3"} onClick={this.addPanier}>
+                                                    Ajouter au panier
+                                                </Button>
+                                            }
+                                            {
+                                                x.stock === 0 && <h4 className={"text-danger"}>
+                                                    En rupture de stock
+                                                </h4>
+                                            }
                                         </Col>
                                     </Row>
                                 </Card.Footer>

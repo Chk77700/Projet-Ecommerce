@@ -24,7 +24,7 @@ export default function Modify(){
         form.append("id_vendeur", localStorage.getItem("userId"));
         form.append("id", id)
         const response = await Axios.post("http://localhost:8000/modifyArticle", form);
-        console.log(response.data);
+        window.location = "http://localhost:3000/maBoutique";
     }
 
     return (
