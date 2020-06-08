@@ -6,7 +6,9 @@ export default class Article extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            article: []
+            article: [],
+            options: [],
+            number: 1
         }
     }
 
@@ -18,6 +20,11 @@ export default class Article extends React.Component {
         await this.addView();
         await Axios.post("http://localhost:8000/article", {id: window.location.href.split("/")[4]})
             .then(resp => this.setState({article: resp.data}));
+        let option = [];
+        for(let i = 1 ; i <= this.state.article[0].stock; i++)
+            option.push(true);
+        this.setState({options: option})
+        console.log(option, this.state.article[0].stock)
     }
 
     addView = async () => {
@@ -26,9 +33,11 @@ export default class Article extends React.Component {
     }
 
     addPanier = (e) => {
+        console.log(this.state.number)
         let article = this.state.article[0];
         let panier = JSON.parse(localStorage.getItem("panier"));
-        panier === null ? panier = [article] : panier.push(article);
+        while (this.state.number-- > 0)
+            panier === null ? panier = [article] : panier.push(article);
         localStorage.setItem("panier", JSON.stringify(panier));
         this.props.refresh();
     }
@@ -62,6 +71,13 @@ export default class Article extends React.Component {
                                             <h4>{`${x.price}€`}</h4>
                                         </Col>
                                         <Col>
+                                            <Form.Control as="select" onChange={(e) => this.setState({number: e.target.value})} custom>
+                                                {
+                                                    this.state.options.map((x, i) => (
+                                                        <option>{i + 1}</option>
+                                                    ))
+                                                }
+                                            </Form.Control>
                                             {
                                                 x.stock > 0 && <Button value={i} variant={"ecommerce3"} onClick={this.addPanier}>
                                                     Ajouter au panier
