@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from '@material-ui/core/Button';
-
+import {Form} from "react-bootstrap";
 import axios from 'axios';
 import Login from "./Login";
 
@@ -29,7 +29,8 @@ export default class Register extends Component {
             hidden: true,
             loading: false,
             errors: {},
-            register: true
+            register: true,
+            vendeur: false
         }
 
     }
@@ -78,10 +79,15 @@ export default class Register extends Component {
     onSubmit(e) {
         e.preventDefault();
 
+        let role = "";
+        if(!this.state.vendeur) role = "client";
+        else role = "vendeur";
+
         const user = {
             username: this.state.username,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            role: role
         }
         const config = {
             headers: {'Access-Control-Allow-Origin': '*'}
@@ -184,6 +190,9 @@ export default class Register extends Component {
                                         />
                                         <i className="fas fa-eye" onClick={this.showPassword}></i>
                                     </div>
+                                    <Form.Check onChange={() =>
+                                        this.state.vendeur === false  ? this.setState({vendeur: true}) : this.setState({vendeur: false})
+                                    } type="checkbox" label="Je suis un vendeur" />
                                 </div>
                             </div>
                         </div>
