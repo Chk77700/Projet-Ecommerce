@@ -9,17 +9,24 @@ export default class Panier extends React.Component {
             this.state = {
                 panier: JSON.parse(localStorage.getItem("panier")),
                 total: 0,
-                adresse: ""
+                adresse: "",
+                isConnected: null
             }
         else this.state = {
             panier: [],
             total: 0,
-            adresse: ""
+            adresse: "",
+            isConnected: null
         }
     }
 
     componentDidMount() {
         this.refreshPanier();
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (nextProps.isConnected)
+            this.setState({isConnected: true});
     }
 
     refreshPanier = (e) => {
@@ -44,7 +51,7 @@ export default class Panier extends React.Component {
             userId: localStorage.getItem("userId")
         }
         const response = await Axios.post("http://localhost:8000/commande", body);
-        if(response.data) {
+        if (response.data) {
             localStorage.setItem("panier", JSON.stringify([]));
             this.props.refresh();
             window.location = "http://localhost:3000/mesCommandes";
@@ -92,14 +99,17 @@ export default class Panier extends React.Component {
                     <Col>
                         {`Total: ${this.state.total}€`}
                     </Col>
-                    <Col>
-                        <FormControl type="text" placeholder="Votre adresse" onChange={(e) => this.setState({adresse: e.target.value})}/>
-                    </Col>
-                    <Col>
-                        <Button variant={"ecommerce3"} onClick={this.sendCommande}>
-                            Commander
-                        </Button>
-                    </Col>
+                    {this.state.isConnected && <>
+                        <Col>
+                            <FormControl type="text" placeholder="Votre adresse"
+                                         onChange={(e) => this.setState({adresse: e.target.value})}/>
+                        </Col>
+                        <Col>
+                            <Button variant={"ecommerce3"} onClick={this.sendCommande}>
+                                Commander
+                            </Button>
+                        </Col>
+                    </>}
                 </Row>
             </>
         )
