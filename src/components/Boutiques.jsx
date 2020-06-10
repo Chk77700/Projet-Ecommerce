@@ -25,6 +25,7 @@ export default class Boutiques extends React.Component {
     componentDidMount() {
         Axios.post("http://localhost:8000/boutiques").then(res => {
             this.setState({boutiques: res.data});
+            console.log(res.data)
         });
     }
 
