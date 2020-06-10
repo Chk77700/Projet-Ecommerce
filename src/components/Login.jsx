@@ -91,9 +91,9 @@ export default class Login extends Component {
                     {/*<Link to="/"><i className="fas fa-arrow-left"></i></Link>*/}
                 </span>
                 <div className="container-login-without">
-                    <h1>Print'n go</h1>
-                    <p className="header">Connecte-toi avec ton adresse e-mail pour commencer a partager tes
-                        réalisations.</p>
+                    <h1><a href='http://localhost:3000/'>Print'n go</a></h1>
+                    <p className="header">Connectez vous avec votre adresse e-mail pour <p> commencer a partager votre
+                        realisations.</p></p>
                     <form onSubmit={this.onSubmit}>
                         <div className="content">
                             <div className="form">
@@ -125,8 +125,9 @@ export default class Login extends Component {
                                 <Button
                                     type="submit"
                                     className="btn">
-                                    Se connecter
+                                    Connection
                                 </Button>
+
                             </div>
                         </div>
                     </form>

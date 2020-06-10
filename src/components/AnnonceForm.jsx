@@ -13,7 +13,6 @@ export default class AnnonceForm extends React.Component {
             photo: null
         }
     }
-
     sendForm = async (e) => {
         e.preventDefault();
         let form = new FormData();
@@ -26,7 +25,6 @@ export default class AnnonceForm extends React.Component {
         const response = await Axios.post("http://localhost:8000/postArticle", form);
         window.location = "http://localhost:3000/maBoutique";
     }
-
     render() {
         return (
             <Container style={{marginTop: "20px"}}>

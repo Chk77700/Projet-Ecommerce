@@ -122,15 +122,15 @@ export default class Register extends Component {
         if (this.state.register)
             return (
                 <div className="container-register">
-                <span className="logo-back">
+                <span className="logo-back" color='red'>
                     {/*<Link to="/"><i className="fas fa-arrow-left"></i></Link>*/}
                 </span>
-                    <h1 className="header">S'inscire</h1>
+                    <h1 className="header">Inscription</h1>
                     <form onSubmit={this.onSubmit}>
                         <div className="form">
                             <div>
-                                <h3 className="h3-register">TON NOM D'UTILISATEUR</h3>
-                                <TextField
+                                <h3 className="h3-register"></h3>
+                                <TextField  color='red'
                                     id="username"
                                     name="username"
                                     type="text"
@@ -142,7 +142,7 @@ export default class Register extends Component {
                                 />
                             </div>
                             <div>
-                                <h3 className="h3-register">IMFORMATION DU COMPTE</h3>
+                                <h3 className="h3-register"></h3>
                                 <TextField
                                     id="email"
                                     name="email"
@@ -153,6 +153,7 @@ export default class Register extends Component {
                                     value={this.state.email}
                                     onChange={this.onChangeEmail}
                                 />
+                                <div></div>
                                 <TextField
                                     type="email"
                                     name="emailconfirm"
@@ -207,7 +208,7 @@ export default class Register extends Component {
                                 variante="contained"
                                 color="primary"
                                 onClick={() => this.setState({register: null})}>
-                                Se connnecter
+                                Se connecter
                             </Button>
                         </div>
                     </form>
