@@ -17,13 +17,14 @@ import Register from "./Register";
 
 import '../css/bootstrapCommerce.css';
 import "../font/Oswald-VariableFont_wght.ttf";
+import Headers from "./BreadCrumbs/Headers";
 
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
         let taille = 0;
         let isConnected;
-        if(localStorage.getItem("panier") !== null){
+        if (localStorage.getItem("panier") !== null) {
             isConnected = true;
             const panier = JSON.parse(localStorage.getItem("panier"));
             for (let i = 0; i < panier.length; i++)
@@ -39,7 +40,7 @@ export default class Home extends React.Component {
     }
 
     getRole = async () => {
-        if(localStorage.getItem("userId") !== null) {
+        if (localStorage.getItem("userId") !== null) {
             const role = await Axios.post("http://localhost:8000/getRole", {id: this.state.idUser});
             if (role.data.role === "vendeur")
                 this.setState({isAdmin: true});
@@ -62,8 +63,10 @@ export default class Home extends React.Component {
         return (
             <Router>
                 <div style={{fontFamily: "Oswald"}} className={"bg-light text-dark"}>
-                    <Header taille={this.state.taillePanier} isAdmin={this.state.isAdmin} isConnected={this.state.isConnected}
+                    <Header taille={this.state.taillePanier} isAdmin={this.state.isAdmin}
+                            isConnected={this.state.isConnected}
                             refreshConnect={this.refreshConnect}/>
+                    <Headers/>
                     <Row>
                         <Col lg={2} sm={0}/>
                         <Col lg={8} sm={12}>
