@@ -1,6 +1,7 @@
 import React from "react";
 import {Container, Card, Col, Button, Row} from "react-bootstrap";
 import Axios from "axios";
+import {Link} from "react-router-dom";
 
 export default class MesCommandes extends React.Component {
     constructor(props) {
@@ -45,9 +46,11 @@ export default class MesCommandes extends React.Component {
                                             <h5>{`Date: ${x.date}`}</h5>
                                         </Col>
                                         <Col>
-                                            <Button variant={"ecommerce3"}>
-                                                Details
-                                            </Button>
+                                            <Link to={`/commandeDetail/${x.id}`}>
+                                                <Button variant={"ecommerce3"}>
+                                                    Details
+                                                </Button>
+                                            </Link>
                                         </Col>
                                     </Row>
                                 </Card.Footer>

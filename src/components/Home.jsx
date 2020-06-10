@@ -1,8 +1,6 @@
 import React from 'react';
 import Header from "./Header";
 import {Row, Col} from "react-bootstrap";
-import '../css/bootstrapCommerce.css';
-import "../font/Oswald-VariableFont_wght.ttf";
 import Devis from "./Devis";
 import Boutiques from "./Boutiques";
 import Panier from "./Panier";
@@ -14,28 +12,43 @@ import Modify from "./Modify";
 import Article from "./Article";
 import MostViewed from "./MostViewed";
 import MesCommandes from "./MesCommandes";
+import CommandeDetail from "./CommandeDetail";
+import Register from "./Register";
+
+import '../css/bootstrapCommerce.css';
+import "../font/Oswald-VariableFont_wght.ttf";
+import Headers from "./BreadCrumbs/Headers";
 
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
         let taille = 0;
-        if(localStorage.getItem("panier") !== null){
+        let isConnected;
+        if (localStorage.getItem("panier") !== null) {
+            isConnected = true;
             const panier = JSON.parse(localStorage.getItem("panier"));
             for (let i = 0; i < panier.length; i++)
                 taille += parseInt(panier[i].total);
-        }
+        } else isConnected = null;
         this.state = {
             taillePanier: taille,
             idUser: localStorage.getItem("userId"),
-            isAdmin: null
+            isAdmin: null,
+            isConnected: isConnected
         };
         this.getRole();
     }
 
     getRole = async () => {
-        const role = await Axios.post("http://localhost:8000/getRole", {id: this.state.idUser});
-        if (role.data.role === "vendeur")
-            this.setState({isAdmin: true});
+        if (localStorage.getItem("userId") !== null) {
+            const role = await Axios.post("http://localhost:8000/getRole", {id: this.state.idUser});
+            if (role.data.role === "vendeur")
+                this.setState({isAdmin: true});
+        }
+    }
+
+    refreshConnect = () => {
+        this.setState({isConnected: true})
     }
 
     refreshPanier = () => {
@@ -49,8 +62,11 @@ export default class Home extends React.Component {
     render() {
         return (
             <Router>
-                <div style={{fontFamily: "Oswald"}} className={"bg-white"}>
-                    <Header taille={this.state.taillePanier} isAdmin={this.state.isAdmin}/>
+                <div style={{fontFamily: "Oswald"}} className={"bg-light text-dark"}>
+                    <Header taille={this.state.taillePanier} isAdmin={this.state.isAdmin}
+                            isConnected={this.state.isConnected}
+                            refreshConnect={this.refreshConnect}/>
+                    <Headers/>
                     <Row>
                         <Col lg={2} sm={0}/>
                         <Col lg={8} sm={12}>
@@ -65,7 +81,7 @@ export default class Home extends React.Component {
                                     <Boutiques refresh={this.refreshPanier}/>
                                 </Route>
                                 <Route path="/panier">
-                                    <Panier refresh={this.refreshPanier}/>
+                                    <Panier refresh={this.refreshPanier} isConnected={this.state.isConnected}/>
                                 </Route>
                                 <Route path="/createArticle">
                                     <AnnonceForm/>
@@ -81,6 +97,12 @@ export default class Home extends React.Component {
                                 </Route>
                                 <Route path={"/mesCommandes"}>
                                     <MesCommandes/>
+                                </Route>
+                                <Route path={"/commandeDetail/:id"}>
+                                    <CommandeDetail/>
+                                </Route>
+                                <Route path={"/register"}>
+                                    <Register/>
                                 </Route>
                             </Switch>
                         </Col>

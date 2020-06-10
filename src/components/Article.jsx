@@ -21,7 +21,7 @@ export default class Article extends React.Component {
         await Axios.post("http://localhost:8000/article", {id: window.location.href.split("/")[4]})
             .then(resp => this.setState({article: resp.data}));
         let option = [];
-        for(let i = 1 ; i <= this.state.article[0].stock; i++)
+        for (let i = 1; i <= this.state.article[0].stock; i++)
             option.push(true);
         this.setState({options: option})
     }
@@ -47,50 +47,60 @@ export default class Article extends React.Component {
                 {
                     this.state.article.map((x, i) => (
                         <>
-                            <Card key={i}>
-                                <Card.Img style={style.boutique} variant="top"
-                                          src={`http://localhost:8000${x.photo}`}/>
-                                <Card.Body>
-                                    <Card.Text className="text-ecommerce1">
-                                        <h3 className="text-ecommerce2">{x.name}</h3>
-                                        {x.description}
-                                    </Card.Text>
-                                    <Row>
-                                        <Col>
-                                            <h4 className={"text-warning"}>{`${x.stock} en stocks`}</h4>
-                                        </Col>
-                                        <Col>
-                                            <h4 className={"text-secondary"}>{`${x.views} vues`}</h4>
-                                        </Col>
-                                    </Row>
-                                </Card.Body>
-                                <Card.Footer>
-                                    <Row>
-                                        <Col>
-                                            <h4>{`${x.price}€`}</h4>
-                                        </Col>
-                                        <Col>
-                                            <Form.Control as="select" onChange={(e) => this.setState({number: e.target.value})} custom>
-                                                {
-                                                    this.state.options.map((x, i) => (
-                                                        <option>{i + 1}</option>
-                                                    ))
-                                                }
-                                            </Form.Control>
-                                            {
-                                                x.stock > 0 && <Button value={i} variant={"ecommerce3"} onClick={this.addPanier}>
-                                                    Ajouter au panier
-                                                </Button>
-                                            }
-                                            {
-                                                x.stock === 0 && <h4 className={"text-danger"}>
-                                                    En rupture de stock
-                                                </h4>
-                                            }
-                                        </Col>
-                                    </Row>
-                                </Card.Footer>
-                            </Card>
+                            <Container key={i} bg={"light"}>
+                                <Row>
+                                    <Col>
+                                        <Card.Img style={style.boutique} variant="top"
+                                                  src={`http://localhost:8000${x.photo}`}/>
+                                    </Col>
+                                    <Col>
+                                        <Card.Body>
+
+                                            <Card.Text className="text-ecommerce1">
+                                                <h3 className="text-ecommerce2">{x.name}</h3>
+                                                {x.description}
+                                            </Card.Text>
+                                            <Row>
+                                                <Col>
+                                                    <h4 className={"text-warning"}>{`${x.stock} en stocks`}</h4>
+                                                </Col>
+                                                <Col>
+                                                    <h4 className={"text-secondary"}>{`${x.views} vues`}</h4>
+                                                </Col>
+                                            </Row>
+                                        </Card.Body>
+                                        <Card.Footer>
+                                            <Row>
+                                                <Col>
+                                                    <h4>{`${x.price}€`}</h4>
+                                                </Col>
+                                                <Col>
+                                                    <Form.Control as="select"
+                                                                  onChange={(e) => this.setState({number: e.target.value})}
+                                                                  custom>
+                                                        {
+                                                            this.state.options.map((x, i) => (
+                                                                <option>{i + 1}</option>
+                                                            ))
+                                                        }
+                                                    </Form.Control>
+                                                    {
+                                                        x.stock > 0 && <Button value={i} variant={"ecommerce3"}
+                                                                               onClick={this.addPanier}>
+                                                            Ajouter au panier
+                                                        </Button>
+                                                    }
+                                                    {
+                                                        x.stock === 0 && <h4 className={"text-danger"}>
+                                                            En rupture de stock
+                                                        </h4>
+                                                    }
+                                                </Col>
+                                            </Row>
+                                        </Card.Footer>
+                                    </Col>
+                                </Row>
+                            </Container>
                             <br/>
                         </>
                     ))
