@@ -14,6 +14,7 @@ import MostViewed from "./MostViewed";
 import MesCommandes from "./MesCommandes";
 import CommandeDetail from "./CommandeDetail";
 import Register from "./Register";
+import Caddie from "./Caddie";
 
 import '../css/bootstrapCommerce.css';
 import "../font/Oswald-VariableFont_wght.ttf";
@@ -103,6 +104,9 @@ export default class Home extends React.Component {
                                 </Route>
                                 <Route path={"/register"}>
                                     <Register/>
+                                </Route>
+                                <Route path={"/caddie"}>
+                                    <Caddie />
                                 </Route>
                             </Switch>
                         </Col>
