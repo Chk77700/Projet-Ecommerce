@@ -3,7 +3,7 @@ import {Container, Card, Col, Button, Row} from "react-bootstrap";
 import Axios from "axios";
 import {Link} from "react-router-dom";
 
-export default class MesCommandes extends React.Component {
+export default class SuiviCommandes extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,8 +16,7 @@ export default class MesCommandes extends React.Component {
     }
 
     getCommandes = async () => {
-        const commandes = await Axios.post("http://localhost:8000/mesCommandes", {id: localStorage.getItem("userId")});
-        console.log(commandes.data);
+        const commandes = await Axios.post("http://localhost:8000/suiviCommandes", {id: localStorage.getItem("userId")});
         this.setState({commandes: commandes.data});
     }
 
@@ -25,7 +24,7 @@ export default class MesCommandes extends React.Component {
         return (
             <Container>
                 <h3 className={"text-ecommerce3"}>
-                    Recapitulatif de vos commandes:
+                    Recapitulatif des commandes qui vous ont ete passees:
                 </h3>
                 <br/>
                 {this.state.commandes.length === 0 && <h4 className={"text-danger"}>Aucunes commandes</h4>}
@@ -37,7 +36,7 @@ export default class MesCommandes extends React.Component {
                                     <h3>{`Statut: ${x.statut}`}</h3>
                                 </Card.Header>
                                 <Card.Body key={i} className={"text-ecommerce2"}>
-                                    <h3>{`Boutique: ${x.boutique}`}</h3>
+                                    <h3>{`Mail du client: ${x.email}`}</h3>
                                     <h4>{`Adresse: ${x.adresse}`}</h4>
                                     <h4>{`Total: ${x.total}€`}</h4>
                                 </Card.Body>
@@ -47,7 +46,7 @@ export default class MesCommandes extends React.Component {
                                             <h5>{`Date: ${x.date}`}</h5>
                                         </Col>
                                         <Col>
-                                            <Link to={`/commandeDetail/${x.id}`}>
+                                            <Link to={`/suiviCommandeDetail/${x.id}`}>
                                                 <Button variant={"ecommerce3"}>
                                                     Details
                                                 </Button>

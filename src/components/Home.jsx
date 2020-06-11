@@ -18,6 +18,10 @@ import Register from "./Register";
 import '../css/bootstrapCommerce.css';
 import "../font/Oswald-VariableFont_wght.ttf";
 import Headers from "./BreadCrumbs/Headers";
+import Search from "./Search";
+import MonCompte from "./MonCompte";
+import SuiviCommandes from "./SuiviCommandes";
+import SuiviCommandeDetail from "./SuiviCommandeDetail";
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -101,8 +105,20 @@ export default class Home extends React.Component {
                                 <Route path={"/commandeDetail/:id"}>
                                     <CommandeDetail/>
                                 </Route>
+                                <Route path={"/suiviCommandesAdmin"}>
+                                    <SuiviCommandes/>
+                                </Route>
+                                <Route path={"/suiviCommandeDetail/:id"}>
+                                    <SuiviCommandeDetail/>
+                                </Route>
                                 <Route path={"/register"}>
                                     <Register/>
+                                </Route>
+                                <Route path={"/search/:search"}>
+                                    <Search/>
+                                </Route>
+                                <Route path={"/monCompte"}>
+                                    <MonCompte/>
                                 </Route>
                             </Switch>
                         </Col>

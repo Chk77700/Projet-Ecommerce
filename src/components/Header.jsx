@@ -13,7 +13,8 @@ export default class Header extends React.Component {
             isConnected: null,
             email: "",
             password: "",
-            error: null
+            error: null,
+            search: ""
         };
     }
 
@@ -55,20 +56,20 @@ export default class Header extends React.Component {
                         <Link to={"/boutiques"}>
                             <Nav.Link href="#boutiques">Boutiques</Nav.Link>
                         </Link>
-                        <NavDropdown title="Services" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#urgences">Urgences</NavDropdown.Item>
-                            <NavDropdown.Item href="#covid">Covid 19</NavDropdown.Item>
-                        </NavDropdown>
-                        <Nav.Link href="#propos">A propos</Nav.Link>
                         {<Link to={"/panier"}>
                             <Nav.Link href="#devis">
                                 <Badge variant={"ecommerce3"}>{this.state.taillePanier}</Badge>
                                 Panier
                             </Nav.Link>
                         </Link>}
-                        {this.state.isConnected && <Link to={"/mesCommandes"}>
-                            <Nav.Link href="#devis">Mes commandes</Nav.Link>
-                        </Link>}
+                        {this.state.isConnected && <>
+                            <Link to={"/mesCommandes"}>
+                                <Nav.Link href="#devis">Mes commandes</Nav.Link>
+                            </Link>
+                            <Link to={"/monCompte"}>
+                                <Nav.Link href="#devis">Mon compte</Nav.Link>
+                            </Link>
+                        </>}
                         {
                             !this.state.isConnected && <NavDropdown title="Se Connecter" id="basic-nav-dropdown">
                                 {this.state.error && <p className={"text-danger"}>Mauvais identifiants!</p>}
@@ -97,6 +98,9 @@ export default class Header extends React.Component {
                                 <Link to={"/maBoutique"}>
                                     <NavDropdown.Item href="#urgences">Ma Boutique</NavDropdown.Item>
                                 </Link>
+                                <Link to={"/suiviCommandesAdmin"}>
+                                    <NavDropdown.Item href="#covid">Suivi de mes commandes</NavDropdown.Item>
+                                </Link>
                                 <Link to={"/createArticle"}>
                                     <NavDropdown.Item href="#covid">Creer une annonce</NavDropdown.Item>
                                 </Link>
@@ -104,8 +108,11 @@ export default class Header extends React.Component {
                         }
                     </Nav>
                     <Form inline>
-                        <FormControl type="text" placeholder="Recherchez un objet" className="mr-sm-2"/>
-                        <Button variant="ecommerce3">Go</Button>
+                        <FormControl type="text" onChange={(e) => this.setState({search: `/search/${e.target.value}`})}
+                                     placeholder="Recherchez un objet" className="mr-sm-2"/>
+                        <Link to={this.state.search}>
+                            <Button variant="ecommerce3">Go</Button>
+                        </Link>
                     </Form>
                 </Navbar.Collapse>
             </Navbar>

@@ -58,6 +58,15 @@ export default class Panier extends React.Component {
         }
     }
 
+    changeTotal = (e, i) => {
+        if (e.target.value === "")
+            e.target.value = 1;
+        let {panier} = this.state;
+        panier[i].total = e.target.value;
+        localStorage.setItem("panier", JSON.stringify(panier));
+        this.refreshPanier();
+    }
+
     render() {
         return (
             <>
@@ -81,6 +90,8 @@ export default class Panier extends React.Component {
                                             </Col>
                                             <Col>
                                                 <h5>{`${x.total} articles`}</h5>
+                                                <FormControl type="number" placeholder="Votre adresse"
+                                                             onChange={(e) => this.changeTotal(e, i)}/>
                                             </Col>
                                             <Col>
                                                 <Button value={i} variant={"danger"} onClick={this.deletePanier}>
