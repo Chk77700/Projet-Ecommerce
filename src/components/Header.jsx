@@ -44,7 +44,13 @@ export default class Header extends React.Component {
             <Navbar bg="ecommerce1" expand="md" variant={"ecommerce3"}>
                 <Link to={"/populaires"}>
                     <Navbar.Brand className="text-ecommerce2" href="#home">
-                        <h3>Print'n Go</h3>
+                        <img
+                            src="/logo.png"
+                            width="60"
+                            height="60"
+                            className="d-inline-block align-top"
+                            alt="React Bootstrap logo"
+                        />
                     </Navbar.Brand>
                 </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
