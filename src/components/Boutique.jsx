@@ -2,7 +2,7 @@ import React from "react";
 import Axios from "axios";
 import {Button, Card, Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
-
+//TODO: comfirmation suppression
 export default class Boutique extends React.Component {
     constructor(props) {
         super(props);

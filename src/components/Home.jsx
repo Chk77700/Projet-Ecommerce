@@ -66,7 +66,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <Router>
-                <div style={{fontFamily: "Oswald"}} className={"bg-light text-dark"}>
+                <div style={{fontFamily: "Oswald"}} className={"bg-light text-ecommerce3"}>
                     <Header taille={this.state.taillePanier} isAdmin={this.state.isAdmin}
                             isConnected={this.state.isConnected}
                             refreshConnect={this.refreshConnect}/>

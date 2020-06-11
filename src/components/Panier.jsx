@@ -90,7 +90,7 @@ export default class Panier extends React.Component {
                                             </Col>
                                             <Col>
                                                 <h5>{`${x.total} articles`}</h5>
-                                                <FormControl type="number" placeholder="Votre adresse"
+                                                <FormControl type="number" value={x.total}
                                                              onChange={(e) => this.changeTotal(e, i)}/>
                                             </Col>
                                             <Col>
@@ -110,7 +110,7 @@ export default class Panier extends React.Component {
                     <Col>
                         {`Total: ${this.state.total}€`}
                     </Col>
-                    {this.state.isConnected && <>
+                    {this.state.isConnected && this.state.total > 0 && <>
                         <Col>
                             <FormControl type="text" placeholder="Votre adresse"
                                          onChange={(e) => this.setState({adresse: e.target.value})}/>
