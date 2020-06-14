@@ -3,6 +3,8 @@ import {Navbar, Nav, NavDropdown, Form, FormControl, Button, Badge, Row, Col} fr
 import {Link} from "react-router-dom";
 import Axios from "axios";
 
+import "../css/font.css";
+
 export default class Header extends React.Component {
 
     constructor(props) {
@@ -41,8 +43,8 @@ export default class Header extends React.Component {
 
     render() {
         return (
-            <Navbar bg="ecommerce1" expand="md" variant={"ecommerce3"}>
-                <Link to={"/populaires"}>
+            <Navbar expand="md" variant={"ecommerce3"} className="main-navbar bg-ecommerce1">
+                <Link to={"/"}>
                     <Navbar.Brand className="text-ecommerce2" href="#home">
                         <img
                             src="/logo.png"
@@ -55,7 +57,7 @@ export default class Header extends React.Component {
                 </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
+                    <Nav className="mr-auto header-navbar">
                         <Link to={"/devis"}>
                             <Nav.Link href="#devis">Faire un devis</Nav.Link>
                         </Link>

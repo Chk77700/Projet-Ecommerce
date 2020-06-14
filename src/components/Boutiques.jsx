@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Image, Card, Badge, Row, Button, Col} from "react-bootstrap";
+import {Container, Card, Badge, Row, Button, Col} from "react-bootstrap";
 import Axios from "axios";
 import {Link} from "react-router-dom";
 

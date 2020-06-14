@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {Card, Col, Container, Form, Image, Row} from "react-bootstrap";
+import {Card, Col, Container, Form, Row} from "react-bootstrap";
 import Axios from "axios";
 
 export default function SuiviCommandeDetail() {
