@@ -52,7 +52,7 @@
     /* background: black; */
 }
 .main-padding-top-devis{
-    padding: 50px;
+    padding: 130px;
     background: #0b1930;
 }
 .main-devis{
@@ -64,7 +64,19 @@
 .main-devis-p{
     color: rgb(255, 255, 255);
 }
-
+.main-devis-h1{
+    color: rgb(255, 255, 255);
+    width: 400px;
+}
+.main-devis-logo{
+    display: flex;
+    padding: 20px 0 10px 0;
+}
+.main-devis-logo i {
+    padding-right: 10px;
+    padding-top: 4px;
+    color: white;
+}
 .main-temoignage {
     padding: 30px 0 30px 0;
     /* background: red; */
@@ -77,8 +89,10 @@
     padding: 20px;
     display: flex;
 }
+
 .main-temoignage-para{
     /* background: black; */
+    text-align: center;
     padding: 50px 100px 50px 0;
 }
 
@@ -192,3 +206,8 @@ li{
 }
 
 /* #5400ec */
+
+
+.container-background{
+    background: white;
+}
