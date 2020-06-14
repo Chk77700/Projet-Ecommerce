@@ -23,7 +23,6 @@ import MonCompte from "./MonCompte";
 import SuiviCommandes from "./SuiviCommandes";
 import SuiviCommandeDetail from "./SuiviCommandeDetail";
 import PageAccueil from './PageAccueil';
-import Langage from "./Langage";
 import Default from "./Default";
 
 export default class Home extends React.Component {
@@ -69,7 +68,6 @@ export default class Home extends React.Component {
     render() {
         return (
             <Router>
-                <Langage />
                 <div style={{fontFamily: "Oswald"}} className={"bg-light text-dark test"}>
 
                     <Header taille={this.state.taillePanier} isAdmin={this.state.isAdmin}
