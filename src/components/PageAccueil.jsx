@@ -19,8 +19,6 @@ export default class PageAccueil extends Component{
                                     {/* <button></button> */}
                                     <span className="button-t"><Link to="/register" style={{ textDecoration: 'none' }}>Rejoindre</Link></span>
                                 </div>
-                                <br></br>
-                                <img src="http://placehold.it/650x650" alt="image des imprimeur 3d"></img>
                             </div>
                         </div>
                     </div>
