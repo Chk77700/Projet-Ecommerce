@@ -1,27 +1,43 @@
 import React from "react";
 import {Button, Card, Col, Form, FormControl, Row} from "react-bootstrap";
 import Axios from "axios";
+import STLViewer from "stl-viewer";
+import {Link} from "react-router-dom";
 
 export default class Panier extends React.Component {
     constructor(props) {
         super(props);
+        let connected = null;
+        let panier = [];
+        if (localStorage.getItem("userId") !== null)
+            connected = true;
         if (localStorage.getItem("panier") !== null)
-            this.state = {
-                panier: JSON.parse(localStorage.getItem("panier")),
-                total: 0,
-                adresse: "",
-                isConnected: null
-            }
-        else this.state = {
-            panier: [],
+            panier = JSON.parse(localStorage.getItem("panier"));
+        this.state = {
+            panier: panier,
             total: 0,
             adresse: "",
-            isConnected: null
+            isConnected: connected,
+            pays: [],
+            livraison: 0,
+            ville: "",
+            nom: "",
+            prenom: "",
+            idPays: "",
+            codePostal: "",
+            dateCarte: "",
+            ccvCarte: "",
+            numeroCarte: "",
+            isSub: false,
+            economie: 0
         }
     }
 
     componentDidMount() {
         this.refreshPanier();
+        this.getPays();
+        this.getInfo();
+        this.getAbo();
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
@@ -29,12 +45,55 @@ export default class Panier extends React.Component {
             this.setState({isConnected: true});
     }
 
+    getInfo = async () => {
+        if(this.state.isConnected !== null) {
+            const res = await Axios.post("http://localhost:8000/getAdresse", {id: localStorage.getItem("userId")});
+            console.log(res.data);
+            if(res.data.carte)
+                this.setState({
+                    dateCarte: res.data.carte.date,
+                    numeroCarte: res.data.carte.numero,
+                    ccvCarte: res.data.carte.ccv
+                });
+            if(res.data.adresse)
+                this.setState({
+                    adresse: res.data.adresse.adresse,
+                    codePostal: res.data.adresse.code_postal,
+                    idPays: res.data.adresse.id_pays,
+                    nom: res.data.adresse.nom,
+                    prenom: res.data.adresse.prenom,
+                    ville: res.data.adresse.ville,
+                    livraison: this.state.pays[res.data.adresse.id_pays].prix
+                })
+        }
+    }
+
     refreshPanier = (e) => {
         const panier = JSON.parse(localStorage.getItem("panier"));
         let total = 0;
-        for (let i = 0; i < panier.length; i++)
-            total += parseInt(panier[i].total) * parseInt(panier[i].price);
-        this.setState({panier: panier, total: total})
+        let economie = 0
+        for (let i = 0; i < panier.length; i++) {
+            if(!this.state.isSub)
+                total += ((parseInt(panier[i].total) * parseInt(panier[i].price)) + (parseInt(panier[i].total) * this.state.livraison));
+            else {
+                total += ((parseInt(panier[i].total) * parseInt(panier[i].price)) + ((parseInt(panier[i].total) * this.state.livraison) / 2));
+                economie += (parseInt(panier[i].total) * this.state.livraison) / 2;
+            }
+        }
+        this.setState({panier: panier, total: total, economie: economie})
+    }
+
+    changePays = async (e) => {
+        await this.setState({
+            livraison: this.state.pays[e.target.value].prix,
+            idPays: this.state.pays[e.target.value].id
+        });
+        this.refreshPanier();
+    }
+
+    getPays = async () => {
+        const res = await Axios.post("http://localhost:8000/getPays");
+        this.setState({pays: res.data});
     }
 
     deletePanier = async (e) => {
@@ -45,16 +104,46 @@ export default class Panier extends React.Component {
     }
 
     sendCommande = async (e) => {
+        let userId = localStorage.getItem("userId");
+        if (userId === null)
+            userId = 0;
         const body = {
             articles: this.state.panier,
             adresse: this.state.adresse,
-            userId: localStorage.getItem("userId")
+            userId: userId,
+            ville: this.state.ville,
+            nom: this.state.nom,
+            prenom: this.state.prenom,
+            idPays: this.state.idPays,
+            codePostal: this.state.codePostal,
+            date: this.state.dateCarte,
+            ccv: this.state.ccvCarte,
+            carteNumero: this.state.numeroCarte
+
         }
+        console.log(body)
         const response = await Axios.post("http://localhost:8000/commande", body);
         if (response.data) {
             localStorage.setItem("panier", JSON.stringify([]));
             this.props.refresh();
             window.location = "http://localhost:3000/mesCommandes";
+        }
+    }
+
+    changeTotal = (e, i) => {
+        if (e.target.value === "")
+            e.target.value = 1;
+        let {panier} = this.state;
+        panier[i].total = e.target.value;
+        localStorage.setItem("panier", JSON.stringify(panier));
+        this.refreshPanier();
+    }
+
+    getAbo = async () => {
+        if (localStorage.getItem("userId") !== null) {
+            const res = await Axios.post("http://localhost:8000/getAbo", {id: localStorage.getItem("userId")});
+            if(res.data) this.setState({isSub: true});
+            this.refreshPanier();
         }
     }
 
@@ -66,8 +155,23 @@ export default class Panier extends React.Component {
                         <>
                             <Col lg={4} sm={12} md={6}>
                                 <Card bg={"light"} key={i}>
-                                    <Card.Img style={style.boutique} variant="top"
-                                              src={`http://localhost:8000${x.photo}`}/>
+                                    {
+                                        x.photo.split(".")[x.photo.split(".").length - 1] !== "stl" && x.photo.split(".")[x.photo.split(".").length - 1] !== "STL" &&
+                                        <Card.Img style={style.boutique} variant="top"
+                                                  src={`http://localhost:8000${x.photo}`}/>
+                                    }
+                                    {
+                                        x.photo.split(".")[x.photo.split(".").length - 1] === "stl" || x.photo.split(".")[x.photo.split(".").length - 1] === "STL" &&
+                                        <STLViewer
+                                            model={x.photo}
+                                            width={300}
+                                            height={300}
+                                            modelColor={"red"}
+                                            backgroundColor='#EAEAEA'
+                                            rotate={true}
+                                            orbitControls={true}
+                                        />
+                                    }
                                     <Card.Body>
                                         <Card.Text className="text-ecommerce1">
                                             <h3 className="text-ecommerce2">{x.name}</h3>
@@ -81,6 +185,8 @@ export default class Panier extends React.Component {
                                             </Col>
                                             <Col>
                                                 <h5>{`${x.total} articles`}</h5>
+                                                <FormControl type="number" value={x.total}
+                                                             onChange={(e) => this.changeTotal(e, i)}/>
                                             </Col>
                                             <Col>
                                                 <Button value={i} variant={"danger"} onClick={this.deletePanier}>
@@ -95,19 +201,61 @@ export default class Panier extends React.Component {
                         </>
                     ))}
                 </Row>
+                <h5 className={"text-ecommerce4"}>
+                    {`Total: ${this.state.total}€`}
+                </h5>
+                {
+                    this.state.isSub && <h5 className={"text-success"}>
+                        {`Vous avec economise ${this.state.economie}€ grace a votre abonement premium!`}
+                        </h5>
+                }
                 <Row>
-                    <Col>
-                        {`Total: ${this.state.total}€`}
-                    </Col>
-                    {this.state.isConnected && <>
+                    {this.state.total > 0 && <>
                         <Col>
-                            <FormControl type="text" placeholder="Votre adresse"
-                                         onChange={(e) => this.setState({adresse: e.target.value})}/>
+                            <Form>
+                                <h5>Vos informations de livraison:</h5>
+                                <FormControl type="text" placeholder="Votre nom" value={this.state.nom}
+                                             onChange={(e) => this.setState({nom: e.target.value})}/>
+                                <FormControl type="text" placeholder="Votre prenom" value={this.state.prenom}
+                                             onChange={(e) => this.setState({prenom: e.target.value})}/>
+                                <FormControl type="number" placeholder="Votre code postal" value={this.state.codePostal}
+                                             onChange={(e) => this.setState({codePostal: e.target.value})}/>
+                                <FormControl type="text" placeholder="Votre ville" value={this.state.ville}
+                                             onChange={(e) => this.setState({ville: e.target.value})}/>
+                                <FormControl type="text" placeholder="Votre adresse" value={this.state.adresse}
+                                             onChange={(e) => this.setState({adresse: e.target.value})}/>
+                                <Form.Control as="select" onChange={this.changePays} value={this.state.idPays} custom>
+                                    {
+                                        this.state.pays.map((x, i) => (
+                                            <option idPays={x.id} value={x.id}>{x.pays}</option>
+                                        ))
+                                    }
+                                </Form.Control>
+                            </Form>
                         </Col>
                         <Col>
-                            <Button variant={"ecommerce3"} onClick={this.sendCommande}>
+                            <h5>Vos informations bancaires:</h5>
+                            <FormControl type="number" placeholder="Votre numero de carte" value={this.state.numeroCarte}
+                                         onChange={(e) => this.setState({numeroCarte: e.target.value})}/>
+                            <FormControl type="number" placeholder="Votre CCV" value={this.state.ccvCarte}
+                                         onChange={(e) => this.setState({ccvCarte: e.target.value})}/>
+                            <FormControl type="text" placeholder="mm/yy" value={this.state.dateCarte}
+                                         onChange={(e) => this.setState({dateCarte: e.target.value})}/>
+                        </Col>
+                        <Col>
+                            {this.state.isConnected && <Button variant={"ecommerce3"} onClick={this.sendCommande}>
                                 Commander
-                            </Button>
+                            </Button>}
+                            {!this.state.isConnected && <>
+                                <Button variant={"ecommerce3"} onClick={this.sendCommande}>
+                                    Commander sans se connecter
+                                </Button>
+                                <Link to={"/register"}>
+                                    <Button variant={"ecommerce2"}>
+                                        Inscription
+                                    </Button>
+                                </Link>
+                            </>}
                         </Col>
                     </>}
                 </Row>

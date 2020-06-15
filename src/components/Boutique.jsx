@@ -2,7 +2,7 @@ import React from "react";
 import Axios from "axios";
 import {Button, Card, Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
-
+//TODO: comfirmation suppression
 export default class Boutique extends React.Component {
     constructor(props) {
         super(props);
@@ -22,8 +22,13 @@ export default class Boutique extends React.Component {
     }
 
     delete = (e) => {
-        Axios.post("http://localhost:8000/deleteArticle", {id: this.state.articles[e.target.value].id})
+        const res = prompt("Veuillez rentrer le nom de votre article pour confirmer la suppression!", "");
+        console.log(res)
+        if(res === this.state.articles[e.target.value].name)
+            Axios.post("http://localhost:8000/deleteArticle", {id: this.state.articles[e.target.value].id})
             .then(resp => this.getArticle());
+        else alert("Erreur");
+
     }
 
     render() {

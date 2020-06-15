@@ -13,7 +13,8 @@ export default class Header extends React.Component {
             isConnected: null,
             email: "",
             password: "",
-            error: null
+            error: null,
+            search: ""
         };
     }
 
@@ -41,34 +42,40 @@ export default class Header extends React.Component {
     render() {
         return (
             <Navbar bg="ecommerce1" expand="md" variant={"ecommerce3"}>
-                <Link to={"/populaires"}>
+                <Link to={"/"}>
                     <Navbar.Brand className="text-ecommerce2" href="#home">
-                        <h3>Print'n Go</h3>
+                        <img
+                            src="/logo.png"
+                            width="60"
+                            height="60"
+                            className="d-inline-block align-top"
+                            alt="React Bootstrap logo"
+                        />
                     </Navbar.Brand>
                 </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-                <Navbar.Collapse id="basic-navbar-nav">
+                <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="mr-auto">
                         <Link to={"/devis"}>
-                            <Nav.Link href="#devis">Faire un devis</Nav.Link>
+                            <Nav.Link href="#devis" className={"text-ecommerce4"}>Faire un devis</Nav.Link>
                         </Link>
                         <Link to={"/boutiques"}>
-                            <Nav.Link href="#boutiques">Boutiques</Nav.Link>
+                            <Nav.Link href="#boutiques" className={"text-ecommerce4"}>Boutiques</Nav.Link>
                         </Link>
-                        <NavDropdown title="Services" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#urgences">Urgences</NavDropdown.Item>
-                            <NavDropdown.Item href="#covid">Covid 19</NavDropdown.Item>
-                        </NavDropdown>
-                        <Nav.Link href="#propos">A propos</Nav.Link>
                         {<Link to={"/panier"}>
-                            <Nav.Link href="#devis">
-                                <Badge variant={"ecommerce3"}>{this.state.taillePanier}</Badge>
+                            <Nav.Link href="#devis" className={"text-ecommerce4"}>
+                                <Badge variant={"danger"}>{this.state.taillePanier}</Badge>
                                 Panier
                             </Nav.Link>
                         </Link>}
-                        {this.state.isConnected && <Link to={"/mesCommandes"}>
-                            <Nav.Link href="#devis">Mes commandes</Nav.Link>
-                        </Link>}
+                        {this.state.isConnected && <>
+                            <Link to={"/mesCommandes"}>
+                                <Nav.Link href="#devis" className={"text-ecommerce4"}>Mes commandes</Nav.Link>
+                            </Link>
+                            <Link to={"/monCompte"}>
+                                <Nav.Link href="#devis" className={"text-ecommerce4"}>Mon compte</Nav.Link>
+                            </Link>
+                        </>}
                         {
                             !this.state.isConnected && <NavDropdown title="Se Connecter" id="basic-nav-dropdown">
                                 {this.state.error && <p className={"text-danger"}>Mauvais identifiants!</p>}
@@ -93,19 +100,25 @@ export default class Header extends React.Component {
                             </NavDropdown>
                         }
                         {
-                            this.state.isAdmin && <NavDropdown title="Admin" id="basic-nav-dropdown">
+                            this.state.isAdmin && <NavDropdown title="Admin" id="basic-nav-dropdown" className={"text-ecommerce4"}>
                                 <Link to={"/maBoutique"}>
-                                    <NavDropdown.Item href="#urgences">Ma Boutique</NavDropdown.Item>
+                                    <NavDropdown.Item href="#urgences" className={"text-ecommerce4"}>Ma Boutique</NavDropdown.Item>
+                                </Link>
+                                <Link to={"/suiviCommandesAdmin"}>
+                                    <NavDropdown.Item href="#covid" className={"text-ecommerce4"}>Suivi de mes commandes</NavDropdown.Item>
                                 </Link>
                                 <Link to={"/createArticle"}>
-                                    <NavDropdown.Item href="#covid">Creer une annonce</NavDropdown.Item>
+                                    <NavDropdown.Item href="#covid" className={"text-ecommerce4"}>Creer une annonce</NavDropdown.Item>
                                 </Link>
                             </NavDropdown>
                         }
                     </Nav>
                     <Form inline>
-                        <FormControl type="text" placeholder="Recherchez un objet" className="mr-sm-2"/>
-                        <Button variant="ecommerce3">Go</Button>
+                        <FormControl type="text" onChange={(e) => this.setState({search: `/search/${e.target.value}`})}
+                                     placeholder="Recherchez un objet" className="mr-sm-2"/>
+                        <Link to={this.state.search}>
+                            <Button variant="ecommerce3">Go</Button>
+                        </Link>
                     </Form>
                 </Navbar.Collapse>
             </Navbar>
