@@ -22,6 +22,8 @@ import Search from "./Search";
 import MonCompte from "./MonCompte";
 import SuiviCommandes from "./SuiviCommandes";
 import SuiviCommandeDetail from "./SuiviCommandeDetail";
+import PageAccueil from './PageAccueil';
+import Default from "./Default";
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -66,64 +68,61 @@ export default class Home extends React.Component {
     render() {
         return (
             <Router>
-                <div style={{fontFamily: "Oswald"}} className={"bg-light text-dark"}>
+                <div style={{fontFamily: "Oswald"}} className={"bg-light text-dark test"}>
+
                     <Header taille={this.state.taillePanier} isAdmin={this.state.isAdmin}
                             isConnected={this.state.isConnected}
                             refreshConnect={this.refreshConnect}/>
                     <Headers/>
-                    <Row>
-                        <Col lg={2} sm={0}/>
-                        <Col lg={8} sm={12}>
-                            <Switch>
-                                <Route path={"/populaires"}>
-                                    <MostViewed/>
-                                </Route>
-                                <Route path="/devis">
-                                    <Devis refresh={this.refreshPanier}/>
-                                </Route>
-                                <Route path="/boutiques">
-                                    <Boutiques refresh={this.refreshPanier}/>
-                                </Route>
-                                <Route path="/panier">
-                                    <Panier refresh={this.refreshPanier} isConnected={this.state.isConnected}/>
-                                </Route>
-                                <Route path="/createArticle">
-                                    <AnnonceForm/>
-                                </Route>
-                                <Route path="/maBoutique">
-                                    <Boutique/>
-                                </Route>
-                                <Route path={"/modify/:id"}>
-                                    <Modify/>
-                                </Route>
-                                <Route path={"/article/:id"}>
-                                    <Article refresh={this.refreshPanier}/>
-                                </Route>
-                                <Route path={"/mesCommandes"}>
-                                    <MesCommandes/>
-                                </Route>
-                                <Route path={"/commandeDetail/:id"}>
-                                    <CommandeDetail/>
-                                </Route>
-                                <Route path={"/suiviCommandesAdmin"}>
-                                    <SuiviCommandes/>
-                                </Route>
-                                <Route path={"/suiviCommandeDetail/:id"}>
-                                    <SuiviCommandeDetail/>
-                                </Route>
-                                <Route path={"/register"}>
-                                    <Register/>
-                                </Route>
-                                <Route path={"/search/:search"}>
-                                    <Search/>
-                                </Route>
-                                <Route path={"/monCompte"}>
-                                    <MonCompte/>
-                                </Route>
-                            </Switch>
-                        </Col>
-                        <Col lg={2} sm={0}/>
-                    </Row>
+
+                    <Switch>
+                        <Route path="/" exact component={PageAccueil} />
+                        <Route path={"/populaires"} component={MostViewed} />
+
+                        <Route path="/devis">
+                            <Devis refresh={this.refreshPanier}/>
+                        </Route>
+                        <Route path="/boutiques">
+                            <Boutiques refresh={this.refreshPanier}/>
+                        </Route>
+                        <Route path="/panier">
+                            <Panier refresh={this.refreshPanier} isConnected={this.state.isConnected}/>
+                        </Route>
+                        <Route path="/createArticle">
+                            <AnnonceForm/>
+                        </Route>
+                        <Route path="/maBoutique">
+                            <Boutique/>
+                        </Route>
+                        <Route path={"/modify/:id"}>
+                            <Modify/>
+                        </Route>
+                        <Route path={"/article/:id"}>
+                            <Article refresh={this.refreshPanier}/>
+                        </Route>
+                        <Route path={"/mesCommandes"}>
+                            <MesCommandes/>
+                        </Route>
+                        <Route path={"/commandeDetail/:id"}>
+                            <CommandeDetail/>
+                        </Route>
+                        <Route path={"/suiviCommandesAdmin"}>
+                            <SuiviCommandes/>
+                        </Route>
+                        <Route path={"/suiviCommandeDetail/:id"}>
+                            <SuiviCommandeDetail/>
+                        </Route>
+                        <Route path={"/register"}>
+                            <Register/>
+                        </Route>
+                        <Route path={"/search/:search"}>
+                            <Search/>
+                        </Route>
+                        <Route path={"/monCompte"}>
+                            <MonCompte/>
+                        </Route>
+                        <Route component={Default} />
+                    </Switch>
                 </div>
             </Router>
         );

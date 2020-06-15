@@ -1,6 +1,7 @@
 import React from "react";
-import {Button, Card, Col, Form, FormControl, Row} from "react-bootstrap";
+import {Button, Card, Col, FormControl, Row} from "react-bootstrap";
 import Axios from "axios";
+import Footer from "./Footer";
 
 export default class Panier extends React.Component {
     constructor(props) {
@@ -122,6 +123,7 @@ export default class Panier extends React.Component {
                         </Col>
                     </>}
                 </Row>
+                <Footer />
             </>
         )
     }

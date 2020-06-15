@@ -5074,7 +5074,7 @@ button.bg-dark:focus {
   background-color: #1d2124 !important; }
 
 .bg-ecommerce1 {
-  background-color: #BED9ED !important; }
+  background-color: #BED9ED ; }
 
 a.bg-ecommerce1:hover, a.bg-ecommerce1:focus,
 button.bg-ecommerce1:hover,
