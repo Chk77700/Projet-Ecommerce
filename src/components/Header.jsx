@@ -42,7 +42,7 @@ export default class Header extends React.Component {
     render() {
         return (
             <Navbar bg="ecommerce1" expand="md" variant={"ecommerce3"}>
-                <Link to={"/populaires"}>
+                <Link to={"/"}>
                     <Navbar.Brand className="text-ecommerce2" href="#home">
                         <img
                             src="/logo.png"

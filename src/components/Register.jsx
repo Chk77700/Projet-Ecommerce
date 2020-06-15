@@ -35,11 +35,6 @@ export default class Register extends Component {
 
     }
 
-    componentDidMount() {
-        if(localStorage.getItem("userId") !== null)
-            this.setState({register: null})
-
-    }
 
     showPassword() {
         this.setState({hidden: !this.state.hidden});
@@ -98,7 +93,7 @@ export default class Register extends Component {
             .post("http://localhost:8000/register", user, config)
             .then(res => {
                 if (res.data)
-                    this.setState({register: null});
+                    window.location = "http://localhost:3000/home";
                 else this.setState({error: "erreur"})
                 console.log(res.data);
                 // this.setState({
@@ -119,7 +114,6 @@ export default class Register extends Component {
 
         const {errors} = this.state;
 
-        if (this.state.register)
             return (
                 <div className="container-register">
                 <span className="logo-back">
@@ -190,9 +184,11 @@ export default class Register extends Component {
                                         />
                                         <i className="fas fa-eye" onClick={this.showPassword}></i>
                                     </div>
-                                    <Form.Check onChange={() =>
-                                        this.state.vendeur === false  ? this.setState({vendeur: true}) : this.setState({vendeur: false})
-                                    } type="checkbox" label="Je suis un vendeur" />
+                                    <Form.Check onChange={async() => {
+                                        if(this.state.vendeur === false) await this.setState({vendeur: true});
+                                        else await this.setState({vendeur: false});
+                                        console.log(this.state.vendeur)
+                                    }} type="checkbox" label="Je suis un vendeur" />
                                 </div>
                             </div>
                         </div>
@@ -213,8 +209,5 @@ export default class Register extends Component {
                     </form>
                 </div>
             )
-        else return (
-            <Login/>
-        )
     }
 }

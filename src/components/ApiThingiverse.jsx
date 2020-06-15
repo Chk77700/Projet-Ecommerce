@@ -1,6 +1,7 @@
 import React from "react";
 import {Button, Form, FormControl, Card, InputGroup, Row, Col} from "react-bootstrap";
 import Axios from "axios";
+import STLViewer from "stl-viewer";
 
 export default class ApiThingiverse extends React.Component {
     constructor(props) {
@@ -9,7 +10,9 @@ export default class ApiThingiverse extends React.Component {
             showPage: null,
             page: 1,
             search: "",
-            result: []
+            result: [],
+            url: [],
+            path: ""
         };
     }
 
@@ -31,8 +34,9 @@ export default class ApiThingiverse extends React.Component {
     }
 
     select = async (e) => {
-        const result = await Axios.get(`https://cors-anywhere.herokuapp.com/https://www.thingiverse.com/thing:${e.target.value}/zip`);
-        console.log(result)
+        const url = `https://www.thingiverse.com/thing:${e.target.value}/zip`;
+        const result = await Axios.post(`http://localhost:8000/downloadStl`, {url: url});
+        this.props.stl(result.data.files.filter(x => x.split(".")[x.split(".").length - 1] === "stl" || x.split(".")[x.split(".").length - 1] === "STL"), result.data.path)
     }
 
     render() {
