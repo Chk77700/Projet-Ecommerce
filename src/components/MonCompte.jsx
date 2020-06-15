@@ -14,7 +14,19 @@ export default class MonCompte extends React.Component {
             passwordSuccess: "",
             email: "",
             emailError: "",
-            emailSuccess: ""
+            emailSuccess: "",
+            isSub: false
+        }
+    }
+
+    componentDidMount() {
+        this.getAbo();
+    }
+
+    getAbo = async () => {
+        if (localStorage.getItem("userId") !== null) {
+            const res = await Axios.post("http://localhost:8000/getAbo", {id: localStorage.getItem("userId")});
+            if(res.data) this.setState({isSub: true});
         }
     }
 
@@ -58,6 +70,22 @@ export default class MonCompte extends React.Component {
         }
     }
 
+    sub = async () => {
+        if (localStorage.getItem("userId") !== null) {
+            const res = await Axios.post("http://localhost:8000/setAbo", {id: localStorage.getItem("userId"), abo: true});
+            if(res.data) this.setState({isSub: true});
+            console.log(res.data);
+        }
+    }
+
+    unSub = async () => {
+        if (localStorage.getItem("userId") !== null) {
+            const res = await Axios.post("http://localhost:8000/setAbo", {id: localStorage.getItem("userId"), abo: false});
+            if(res.data) this.setState({isSub: false});
+            console.log(res.data);
+        }
+    }
+
     render() {
         return (
             <Container>
@@ -65,6 +93,17 @@ export default class MonCompte extends React.Component {
                     <Col>
                         <h5 className={"text-success"}>{this.state.photo}</h5>
                         <Form.File label="Choisissez une photo de profil" onChange={this.uploadPhoto} custom/>
+                        <hr/>
+                        {
+                            this.state.isSub && <Button variant={"danger"} onClick={this.unSub}>
+                                Se desabonner
+                            </Button>
+                        }
+                        {
+                            !this.state.isSub && <Button variant={"success"} onClick={this.sub}>
+                                S'abonner
+                            </Button>
+                        }
                     </Col>
                     <Col>
                         <Form>

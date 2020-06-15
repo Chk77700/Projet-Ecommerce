@@ -53,7 +53,8 @@ export default class StlUpload extends React.Component {
             total: 1,
             price: this.state.price,
             description: this.state.comment,
-            photo: `${this.props.url}`
+            photo: `${this.props.url}`,
+            isUpload: true
         };
         let panier = JSON.parse(localStorage.getItem("panier"));
         panier === null ? panier = [article] : panier.push(article);

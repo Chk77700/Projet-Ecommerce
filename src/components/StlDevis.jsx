@@ -49,7 +49,7 @@ export default class StlDevis extends React.Component {
         let article = {
             id_vendeur: 0,
             name: "Article personalise",
-            id_article: 0,
+            id: 0,
             total: 1,
             price: this.state.price,
             description: this.state.comment,
