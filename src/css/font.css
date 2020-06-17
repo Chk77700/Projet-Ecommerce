@@ -15,15 +15,35 @@
     background: red;
 }
 .main-pageaccueil{
-    /* background: linear-gradient(to right, #e085dd, #62238f); */
-    /* background: #2a323d; */
+    padding: 70px 0 70px 0;
     background: #0b1930;
 }
-
-
+.badge-danger{
+    margin-right: 4px;
+}
+#basic-nav-dropdown{
+    color: rgb(231,130,4);
+}
 /* La partie Header de PageAccueil.jsx */
 
 /* 111111111111111111111111 */
+
+
+.container-header-link{
+    padding: 10px;
+    background: rgba(11, 25, 48, 0.966);
+}
+.header-link{
+    text-align: center;
+    margin: 3px;
+}
+.main-devis-p{
+    color: rgb(231,130,4);
+}
+.header-link a{
+    margin: 20px;
+    color: rgb(231,130,4);
+}
 .header-page{
     text-align: center;
     padding: 20px;
@@ -31,17 +51,21 @@
 .header-h1-color{
     font-size: 60px;
     color: white;
+    padding-bottom: 30px;
 }
 .header-p-color{
     color: white;
+    padding-bottom: 20px;
 }
 
 .button-t{
-    background: #481fdd;
+    background: rgb(231,130,4);
     font-size: 25px;
     padding: 10px;
     border-radius: 5px;
-    color: rgb(255, 255, 255);;
+}
+.button-t a{
+    color: white;
 }
 /* 111111111111111111111111 */
 
@@ -61,9 +85,7 @@
     display: flex;
     justify-content: space-between;
 }
-.main-devis-p{
-    color: rgb(255, 255, 255);
-}
+    
 .main-devis-h1{
     color: rgb(255, 255, 255);
     width: 400px;
@@ -86,16 +108,25 @@
 }   
 .main-temoignage-deux{
     /* background: red; */
-    padding: 20px;
+    padding-top: 20px;
     display: flex;
 }
 
 .main-temoignage-para{
     /* background: black; */
     text-align: center;
-    padding: 50px 100px 50px 0;
+    padding: 50px 30px 50px 0;
+    margin: 10px;
 }
-
+.main-temoignage-para p {
+    padding-top: 10px;
+    text-align: justify;
+}
+.temoignage-padding{
+    /* text-align: center; */
+    /* background: red; */
+    padding-left: 40px;
+}
 .main-tendance{
     text-align: center;
 }
@@ -105,18 +136,12 @@
 }
 .image-tendance-limite{
     margin: 7px;
+    border-radius: 6px;
 }
 .main-limite{
     text-align: center;
 }
-.main-confiance{
-    display: flex;
-    justify-content: space-between;
-}
 
-.image-confiance{
-    margin: 7px;
-}
 /* 222222222222222222222222 */
 
 
@@ -124,7 +149,11 @@
 
 
 /* 333333333333333333333333 */
-footer{
+
+.footer-un{
+    background: rgba(11, 25, 48, 0.966);
+}
+.footer-deux{
     background: #0b1930;
 }
 li{
@@ -210,4 +239,27 @@ li{
 
 .container-background{
     background: white;
+}
+.fa-user{
+    font-size: 100px;
+}
+
+/* Protection des donnees */
+.main-confiance-top{
+    padding: 50px 0 50px 0;
+}
+.main-confiance{
+    padding: 50px 0 50px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.image-confiance{
+    margin: 7px;
+}
+.confiance-p{
+    margin: 12px;
+}
+.fa-check{
+    margin: 10px;
 }
