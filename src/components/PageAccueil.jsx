@@ -1,11 +1,27 @@
 import React, { Component } from "react";
-import Footer from "./Footer";
 import { Link } from "react-router-dom";
-// import { Card } from "react-bootstrap";
 import "../css/font.css";
+import Axios from "axios";
+import {Button, Card, Col, Container, Row, Image } from "react-bootstrap";
 
 export default class PageAccueil extends Component{
-        
+    constructor(props) {
+        super(props);
+        this.state = {
+            idUser: localStorage.getItem("userId"),
+            articles: []
+        };
+    }
+
+    componentDidMount() {
+        this.getMostViewed();
+    }
+
+    getMostViewed = () => {
+        Axios.post("http://localhost:8000/mostViewed", {id: this.state.idUser})
+            .then(resp => this.setState({articles: resp.data}));
+    }
+
     render () {
         return (
             <div>
@@ -23,17 +39,41 @@ export default class PageAccueil extends Component{
                             </div>
                         </div>
                     </div>
+                    <div className="container-header-link">
+                        <div className="header-link">
+                            <Link style={{ textDecoration: 'inherit'}} to="/meilleur">Meilleurs ventes</Link>
+                            <Link style={{ textDecoration: 'inherit'}} to="/nouveaute">Dernières Nouveautés</Link>
+                            <Link style={{ textDecoration: 'inherit'}} to="/nouveaute">Nos vendeurs</Link>
+                        </div>
+                    </div>
                     <div className="main-padding-top">
                         <div className="container container-background">
                             <div>
                                 <h2 className="main-tendance">Les réalisations les plus demandés</h2>
                                 {/* <p>(par example un ajout de like, de vue etc...)</p> */}
                                 <div className="main-tendance-image">
-                                    <img className="image-tendance-limite" height="400" width="330" src={require('../images/Ecommerce7.png')} />
-                                    <img className="image-tendance-limite" height="400" width="330" src={require('../images/Ecommerce7.png')} />
-                                    <img className="image-tendance-limite" height="400" width="330" src={require('../images/Ecommerce7.png')} />
+                                    <Container>
+                                        <Row>
+                                            {
+                                                this.state.articles.map((x, i) => (
+                                                    <>
+                                                        <Col lg={4} sm={12} md={6}>
+                                                            <Card.Img style={style.boutique} variant="top" src={`http://localhost:8000${x.photo}`}/>
+                                                            <Card.Footer>
+                                                                        <Link to={`/article/${x.id}`}>
+                                                                            <Button value={i} variant={"ecommerce3"}>
+                                                                                Details
+                                                                            </Button>
+                                                                        </Link>
+                                                            </Card.Footer>
+                                                        </Col>
+                                                    </>
+                                                ))
+                                            }
+                                        </Row>
+                                    </Container>
                                 </div>
-                                <Link to="/populaires" >Tout voir</Link>
+                                <Link to="/populaires" className="main-devis-p" style={{ textDecoration: 'inherit'}} >Tout voir</Link>
                             </div>
                         </div>
                     </div>
@@ -42,7 +82,6 @@ export default class PageAccueil extends Component{
                         <div className="container container-background">
                             <div>
                                 <h2 className="main-limite">Des pièces en édition limitée</h2>
-                                <h2 className="main-limite">( Timer + le nombre de pièces restant )</h2>
                                 <div>
                                     <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce1.png')} />
                                     <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce2.png')} />
@@ -51,7 +90,7 @@ export default class PageAccueil extends Component{
                                     <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce5.png')} />
                                     <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce6.png')} />
                                 </div>
-                                <Link to="#" >Tout voir</Link>
+                                <Link to="#" className="main-devis-p" style={{ textDecoration: 'inherit'}} >Tout voir</Link>
                             </div>
                         </div>
                     </div>
@@ -63,54 +102,63 @@ export default class PageAccueil extends Component{
                                     <h1 className="main-devis-h1">Obtenez des pièces de qualité rapidement et sans difficulté</h1>
                                     <div className="main-devis-logo">
                                         <i class="fas fa-book"></i>
-                                        <p className="main-devis-p"><Link to="/devis">Établir un devis</Link></p>
+                                        <Link className="main-devis-p" style={{ textDecoration: 'inherit'}} to="/devis">Établir un devis</Link>
                                     </div>
                                     <div className="main-devis-logo">
                                         <i class="far fa-paper-plane"></i>
-                                        <p className="main-devis-p"><Link to="#">Suivre la production de vos pièces</Link></p>
+                                        <Link className="main-devis-p" style={{ textDecoration: 'inherit'}} to="#">Suivre la production de vos pièces</Link>
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <img className="image-tendance-limite" height="350" width="350" src={require('../images/Ecommerce13.png')} />
-                                {/* <img src="http://placehold.it/450x450" alt="image d'une realisation en 3d"></img> */}
                             </div>        
                         </div>
                     </div>
                     <div className="main-padding-top">
-                        <div className="container main-temoignage container-background">
+                        <div className="container main-temoignage">
                             <h1 className="main-temoignage-h1">Témoignages</h1>
                             <div className="main-temoignage-deux">
-                                <div className="main-temoignage-para">
-                                    <img className="image-tendance-limite" height="110" width="110" src={require('../images/Ecommerce11.png')} />
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, quia sit eveniet numquam, corporisLorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, eos aut dolorum.</p>
+
+                                <div className="main-temoignage-para container-background">
+                                    <div className="temoignage-padding">
+                                        <img className="image-tendance-limite" height="110" width="110" src={require('../images/Ecommerce11.png')} />
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, quia sit eveniet numquam, corporisLorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, eos aut dolorum.</p>
+                                    </div>
                                 </div>
-                                <div className="main-temoignage-para">
-                                    <img className="image-tendance-limite" height="110" width="110" src={require('../images/Ecommerce10.png')} />
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, quia sit eveniet numquam, corporisLorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, eos aut dolorum.</p>
+                                
+                                <div className="main-temoignage-para container-background">
+                                    <div className="temoignage-padding">
+                                        <img className="image-tendance-limite" height="110" width="110" src={require('../images/Ecommerce10.png')} />
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, quia sit eveniet numquam, corporisLorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, eos aut dolorum.</p>
+                                    </div>
                                 </div>
-                                <div className="main-temoignage-para">
-                                    <img className="image-tendance-limite" height="110" width="110" src={require('../images/Ecommerce10.png')} />
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, quia sit eveniet numquam, corporisLorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, eos aut dolorum.</p>
+                                
+                                <div className="main-temoignage-para container-background">
+                                    <div className="temoignage-padding">
+                                        <img className="image-tendance-limite" height="110" width="110" src={require('../images/Ecommerce10.png')} />
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, quia sit eveniet numquam, corporisLorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, eos aut dolorum.</p>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
-                    <div className="main-padding-top">
+                    <div className="main-padding-top main-confiance-top">
                         <div className="container main-confiance container-background">
                             <div>
                                 <div>
-                                    <img className="image-confiance" src="http://placehold.it/350x150" alt="image des imprimeur 3d"></img>
-                                    <img className="image-confiance" src="http://placehold.it/350x150" alt="image des imprimeur 3d"></img>
+                                    <Image className="image-confiance" width="280" height="170" src={require('../images/un.png')} alt="image qui represante la confiance" />
+                                    <Image className="image-confiance" width="280" height="170" src={require('../images/deux.png')} alt="image qui represante la securite" />
                                 </div>
                             </div>
                             <div>
                                 <div>
                                     <h2>Faites nous confiance</h2>
-                                    <p>protection de données</p>
-                                    <p>Service supplémentaire: marquage de pièce, personnalisation</p>
-                                    <p>Vérification de la production</p>
-                                    <p>Certification des matériaux</p>
+                                    <p className="confiance-p"><i class="fas fa-check"></i>protection de données</p>
+                                    <p className="confiance-p"><i class="fas fa-check"></i>Service supplémentaire: marquage de pièce, personnalisation</p>
+                                    <p className="confiance-p"><i class="fas fa-check"></i>Vérification de la production</p>
+                                    <p className="confiance-p"><i class="fas fa-check"></i>Certification des matériaux</p>
                                 </div>
                             </div>
                         </div>
@@ -118,5 +166,11 @@ export default class PageAccueil extends Component{
                 </main>
             </div>
         )
+    }
+}
+
+const style = {
+    boutique: {
+        cursor: "pointer"
     }
 }
