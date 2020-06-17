@@ -24,6 +24,7 @@ import SuiviCommandes from "./SuiviCommandes";
 import SuiviCommandeDetail from "./SuiviCommandeDetail";
 import PageAccueil from "./PageAccueil";
 import Footer from "./Footer";
+import Default from "./Default";
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -122,6 +123,7 @@ export default class Home extends React.Component {
                         <Route path={"/monCompte"}>
                             <MonCompte/>
                         </Route>
+                        <Route component={Default} />
                     </Switch>
                 </div>
                 <Footer/>
