@@ -30,7 +30,7 @@ export default class MostViewed extends React.Component {
                             <>
                                 <Col lg={4} sm={12} md={6}>
                                     <Card key={i}>
-                                        <Card.Img style={style.boutique} variant="top"
+                                        <Card.Img style={style.boutique} variant="top" height="230"
                                                   src={`http://localhost:8000${x.photo}`}/>
                                         <Card.Body>
                                             <Card.Text className="text-ecommerce1">

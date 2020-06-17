@@ -1,6 +1,6 @@
 import React from "react";
 import Axios from "axios";
-import {Button, Card, Col, Container, Row} from "react-bootstrap";
+import {Button, Card, Col, Container, Row, DropdownButton, Dropdown, NavDropdown} from "react-bootstrap";
 import {Link} from "react-router-dom";
 //TODO: comfirmation suppression
 export default class Boutique extends React.Component {
@@ -8,7 +8,12 @@ export default class Boutique extends React.Component {
         super(props);
         this.state = {
             idUser: localStorage.getItem("userId"),
-            articles: []
+            articles: [],
+            pourcentage: {
+                "#10": 10, 
+                "#20": 20,
+                "#40": 40,
+            }
         };
     }
 
@@ -24,6 +29,20 @@ export default class Boutique extends React.Component {
     delete = (e) => {
         Axios.post("http://localhost:8000/deleteArticle", {id: this.state.articles[e.target.value].id})
             .then(resp => this.getArticle());
+    }
+
+    ChangePourcentage = (e) => {
+        this.setState({
+            pourcentageMaBoutique: this.state.pourcentage[e.target.value]
+        })
+        this.ShowPourcentage();
+    }
+
+    ShowPourcentage = (e) => {
+        this.setState({
+            pourcentage: true,
+            price: this.state.price * (this.state.pourcentageMaBoutique / 100)
+        })
     }
 
     render() {
@@ -61,6 +80,12 @@ export default class Boutique extends React.Component {
                                                         Modifier
                                                     </Button>
                                                 </Link>
+                                                {/* onClick={this.Showpourcentage} */}
+                                                <DropdownButton  title="Mettre une promotion">
+                                                    <Dropdown.Item value={"#10"}>-10%</Dropdown.Item>
+                                                    <Dropdown.Item value={"#20"}>-20%</Dropdown.Item>
+                                                    <Dropdown.Item value={"#40"}>-40%</Dropdown.Item>
+                                                </DropdownButton>
                                                 <Button value={i} variant={"danger"} onClick={this.delete}>
                                                     Supprimer
                                                 </Button>

@@ -1,11 +1,41 @@
 import React, { Component } from "react";
-import Footer from "./Footer";
+import Axios from "axios";
+// import { Slide } from "react-slideshow-image"
 import { Link } from "react-router-dom";
-// import { Card } from "react-bootstrap";
+import {Button, Card, Col, Container, Row} from "react-bootstrap";
 import "../css/font.css";
+import { Slide } from "react-slideshow-image"
+
+// import img1 from "../images/Ecommerce1.png"
+
+const proprietes = {
+    transitionDuration: 1500,
+    infinite: true,
+    indications: true,
+    arrows: true    
+}
+
 
 export default class PageAccueil extends Component{
         
+    constructor(props) {
+        super(props);
+        this.state = {
+            idUser: localStorage.getItem("userId"),
+            articles: []
+        };
+    }
+
+
+    componentDidMount() {
+        this.getMostViewed();
+    }
+
+    getMostViewed = () => {
+        Axios.post("http://localhost:8000/mostViewed", {id: this.state.idUser})
+            .then(resp => this.setState({articles: resp.data}));
+    }
+
     render () {
         return (
             <div>
@@ -23,15 +53,45 @@ export default class PageAccueil extends Component{
                             </div>
                         </div>
                     </div>
+                    
                     <div className="main-padding-top">
                         <div className="container container-background">
                             <div>
                                 <h2 className="main-tendance">Les réalisations les plus demandés</h2>
-                                {/* <p>(par example un ajout de like, de vue etc...)</p> */}
                                 <div className="main-tendance-image">
-                                    <img className="image-tendance-limite" height="400" width="330" src={require('../images/Ecommerce7.png')} />
-                                    <img className="image-tendance-limite" height="400" width="330" src={require('../images/Ecommerce7.png')} />
-                                    <img className="image-tendance-limite" height="400" width="330" src={require('../images/Ecommerce7.png')} />
+                                    <Container>
+                                        <Row>
+                                            { 
+                                                this.state.articles.map((x, i) => (        
+                                                <>
+                                                <Col lg={4} sm={12} md={6}>
+                                                    <Card key={i}>
+                                                        <Card.Img style={style.boutique} variant="top" height="230"
+                                                                src={`http://localhost:8000${x.photo}`}/>
+                                                        <Card.Body>
+                                                            <Card.Text className="text-ecommerce1">
+                                                                <h4 className={"text-secondary"}>{`${x.views} vues`}</h4>
+                                                            </Card.Text>
+                                                        </Card.Body>
+                                                        <Card.Footer>
+                                                            <Row>
+                                                                <Col>
+                                                                    <Link to={`/article/${x.id}`}>
+                                                                        <Button value={i} variant={"ecommerce3"}>
+                                                                            Details
+                                                                        </Button>
+                                                                    </Link>
+                                                                </Col>
+                                                            </Row>
+                                                        </Card.Footer>
+                                                    </Card>
+                                                    <br/>
+                                                </Col>
+                                                </>
+                                                ))  
+                                            }
+                                        </Row>
+                                    </Container>
                                 </div>
                                 <Link to="/populaires" >Tout voir</Link>
                             </div>
@@ -42,14 +102,17 @@ export default class PageAccueil extends Component{
                         <div className="container container-background">
                             <div>
                                 <h2 className="main-limite">Des pièces en édition limitée</h2>
-                                <h2 className="main-limite">( Timer + le nombre de pièces restant )</h2>
-                                <div>
-                                    <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce1.png')} />
-                                    <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce2.png')} />
-                                    <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce3.png')} />
-                                    <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce4.png')} />
-                                    <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce5.png')} />
-                                    <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce6.png')} />
+                                <div className="slider">
+                                    <div className="main-limite-slide">
+                                        {/* <Slide {...proprietes} > */}
+                                            <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce1.png')} />
+                                            <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce2.png')} />
+                                            <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce3.png')} />
+                                            <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce4.png')} />
+                                            <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce5.png')} />
+                                            <img className="image-tendance-limite" height="250" width="350" src={require('../images/Ecommerce6.png')} />
+                                        {/* </Slide> */}
+                                    </div>
                                 </div>
                                 <Link to="#" >Tout voir</Link>
                             </div>
@@ -118,5 +181,11 @@ export default class PageAccueil extends Component{
                 </main>
             </div>
         )
+    }
+}
+
+const style = {
+    boutique: {
+        cursor: "pointer"
     }
 }

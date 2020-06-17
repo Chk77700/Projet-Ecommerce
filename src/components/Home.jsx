@@ -25,6 +25,7 @@ import SuiviCommandeDetail from "./SuiviCommandeDetail";
 import PageAccueil from "./PageAccueil";
 import Footer from "./Footer";
 
+
 export default class Home extends React.Component {
     constructor(props) {
         super(props);

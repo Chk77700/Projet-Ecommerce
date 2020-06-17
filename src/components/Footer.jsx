@@ -9,34 +9,34 @@ export default class Footer extends Component {
                     <div className="footer-about">
                         <div className="footer-container-about">
                             <div className="footer-title">
-                                <strong className="footer-h2-color">A propos</strong>
+                                <strong className="footer-h2-color">À propos</strong>
                             </div>
                                 <ul className="footer-ul">
-                                    <a href="#"><li className="footer-li-color">A propos</li></a>
+                                    <a href="#"><li className="footer-li-color">À propos</li></a>
                                     <a href="#"><li className="footer-li-color">Notre plateforme</li></a>
-                                    <a href="#"><li className="footer-li-color">Controle qualite</li></a>
+                                    <a href="#"><li className="footer-li-color">Contrôle qualité</li></a>
                                     <a href="#"><li className="footer-li-color">Protection IP</li></a>
-                                    <a href="#"><li className="footer-li-color">Nos partenaire</li></a>
+                                    <a href="#"><li className="footer-li-color">Nos partenaires</li></a>
                                 </ul>
                         </div>
                         <div className="footer-container-about">
                             <div className="footer-title">
-                                <strong className="footer-h2-color">Capacite de production</strong>
+                                <strong className="footer-h2-color">Capacité de production</strong>
                             </div>
                                 <ul className="footer-ul">
                                     <a href="#"><li className="footer-li-color">Service d'impression 3D</li></a>
                                     <a href="#"><li className="footer-li-color">Service d'usinage 3D</li></a>
-                                    <a href="#"><li className="footer-li-color">Marquage de piece 3D</li></a>
+                                    <a href="#"><li className="footer-li-color">Marquage de pièce 3D</li></a>
                                     <a href="#"><li className="footer-li-color">Finition de surface</li></a>
                                 </ul>
                         </div>
                         <div className="footer-container-about">
                             <div className="footer-title">
-                                <strong className="footer-h2-color">Matieres</strong>
+                                <strong className="footer-h2-color">Matières</strong>
                             </div>
                                 <ul className="footer-ul">
                                     <a href="#"><li className="footer-li-color">Plastiques en impression 3D</li></a>
-                                    <a href="#"><li className="footer-li-color">Mataux en impression 3D</li></a>
+                                    <a href="#"><li className="footer-li-color">Métaux en impression 3D</li></a>
                                     <a href="#"><li className="footer-li-color">Du bois en impression 3D</li></a>
                                     <a href="#"><li className="footer-li-color">aluminium en impression 3D</li></a>
                                 </ul>
@@ -47,11 +47,11 @@ export default class Footer extends Component {
                             </div>
                                 <ul className="footer-ul">
                                     <a href="#"><li className="footer-li-color">Bureaux</li></a>
-                                    <a href="#"><li className="footer-li-color">Evenement</li></a>
-                                    <a href="#"><li className="footer-li-color">Ecrivez-nous</li></a>
+                                    <a href="#"><li className="footer-li-color">Événement</li></a>
+                                    <a href="#"><li className="footer-li-color">Écrivez-nous</li></a>
                                     <a href="#"><li className="footer-li-color">Appelez-nous au <a>+33 123456789</a></li></a>
                                     <a href="#"><li className="footer-li-color">Aide</li></a>
-                                    <a href="#"><li className="footer-li-color">Obtenir un devis instantane</li></a>
+                                    <a href="#"><li className="footer-li-color">Obtenir un devis Instantané</li></a>
                                     <a href="#"><li className="footer-li-color">Demander une demo</li></a>
                                 </ul>
                         </div>

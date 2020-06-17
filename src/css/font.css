@@ -108,6 +108,32 @@
 }
 .main-limite{
     text-align: center;
+
+}
+
+.slider{
+    width: 1100px;
+    overflow: hidden;
+}
+.main-limite-slide{
+    float: left;
+    width: calc(500px * 5);
+    animation: slide 100s infinite;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    33% {
+        transform: translateX(-500px);
+    }
+    66% {
+        transform: translateX(-1000px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 .main-confiance{
     display: flex;
@@ -210,4 +236,14 @@ li{
 
 .container-background{
     background: white;
+}
+
+
+.containerSlide{
+    width: 500px;
+    margin: auto;
+}
+.containerSlide img{
+    height: 200px;
+    
 }
