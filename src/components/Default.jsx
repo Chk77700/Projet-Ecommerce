@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Footer from "../../../ecommerce/src/components/Footer";
 import { Link } from "react-router-dom";
 
 export default class Default extends Component{
@@ -13,7 +12,6 @@ export default class Default extends Component{
                         <Link to="/" className="error-404-home" style={{ textDecoration: 'none' }}>Page d'accueil</Link>
                     </div>
                 </div>
-                <Footer />
             </div>
         )
     }
