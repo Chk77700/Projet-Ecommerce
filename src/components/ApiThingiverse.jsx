@@ -17,7 +17,7 @@ export default class ApiThingiverse extends React.Component {
     }
 
     searchModel = () => {
-        Axios.get(`https://cors-anywhere.herokuapp.com/https://www.thingiverse.com/search?q=${this.state.search}&type=things&sort=relevant&page=${this.state.page}`)
+        Axios.get(`/search?q=${this.state.search}&type=things&sort=relevant&page=${this.state.page}`)
             .then((response) => this.setState({result: response.data, showPage: true}))
     }
 

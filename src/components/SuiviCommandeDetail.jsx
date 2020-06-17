@@ -28,27 +28,31 @@ export default function SuiviCommandeDetail() {
                 <Container key={i}>
                     <Row>
                         <Col >
+
                             <Card.Img variant="top" src={`http://localhost:8000${x.detailArticle.photo}`}/>
+                            <h3>{`Article: ${x.detailArticle.name}`}</h3>
+                            <h3>{`Prix: ${x.total}€`}</h3>
+                            <h3>{`Nombre d'article: ${x.nombre_article}`}</h3>
                         </Col>
                         <Col>
                             <Row style={{marginTop: "20px"}}>
                                 <Col className={"text-ecommerce2"} style={{borderRight: "1px solid grey"}}>
-                                    <h3>{`Article: ${x.detailArticle.name}`}</h3>
-                                </Col>
-                                <Col className={"text-ecommerce2"} style={{borderRight: "1px solid grey"}}>
-                                    <h3>{`Prix: ${x.total}€`}</h3>
+                                    <h3>{`Nom: ${x.nom}`}</h3>
+                                    <h3>{`Prenom: ${x.prenom}`}</h3>
                                 </Col>
                                 <Col className={"text-ecommerce2"}>
                                     <h3>{`Adresse: ${x.adresse}`}</h3>
+                                    <h3>{`Ville: ${x.ville}`}</h3>
+                                    <h3>{`Code postal: ${x.code_postal}`}</h3>
                                 </Col>
                             </Row>
                             <hr/>
                             <Row>
                                 <Col className={"text-ecommerce2"} style={{borderRight: "1px solid grey"}}>
-                                    <h3>{`Date: ${x.date}`}</h3>
+                                    <h3>{`Date: ${new Date(Date.parse(x.date)).toString()}`}</h3>
                                 </Col>
                                 <Col className={"text-ecommerce2"}>
-                                    <h3>{`${x.statut}`}</h3>
+                                    <h3 className={"text-success"}>{`${x.statut}`}</h3>
                                     <Form.Control as="select" onChange={changeStatut} custom>
                                         <option>{x.statut}</option>
                                         <option>{"En cours de preparation"}</option>

@@ -3,15 +3,18 @@ import {useParams} from "react-router-dom";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import Axios from "axios";
 
-export default function Modify(){
-    let { id } = useParams();
+export default function Modify() {
+    let {id} = useParams();
     let state = {
         description: null,
         name: null,
         stock: null,
         price: null,
         photo: null
-    }
+    };
+    let pourcent = [];
+    for (let i = 0; i < 100; i++)
+        pourcent.push(true);
 
     const sendForm = async (e) => {
         e.preventDefault();
@@ -25,6 +28,11 @@ export default function Modify(){
         form.append("id", id)
         const response = await Axios.post("http://localhost:8000/modifyArticle", form);
         window.location = "http://localhost:3000/maBoutique";
+    }
+
+    const modifySale = async (e) => {
+        const res = await Axios.post("http://localhost:8000/modifySale", {id: id, pourcentage: e.target.value});
+        if (res.data)  window.location = "http://localhost:3000/maBoutique";
     }
 
     return (
@@ -55,6 +63,21 @@ export default function Modify(){
                         <Button type={"submit"} variant={"ecommerce3"} onClick={sendForm}>
                             Valider
                         </Button>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        Pourcentage de rectuction:
+                    </Col>
+                    <Col>
+                        <Form.Control as="select" onChange={(e) => modifySale(e)} custom>
+                            <option>Choisissez le pourcentage de reduction</option>
+                            {
+                                pourcent.map((x, i) => (
+                                    <option>{i}</option>
+                                ))
+                            }
+                        </Form.Control>
                     </Col>
                 </Row>
             </Form>

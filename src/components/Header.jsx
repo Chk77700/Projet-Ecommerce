@@ -39,6 +39,11 @@ export default class Header extends React.Component {
             });
     }
 
+    deco = () => {
+        localStorage.removeItem("userId");
+        window.location = "http://localhost:3000/"
+    }
+
     render() {
         return (
             <Navbar bg="ecommerce1" expand="md" variant={"ecommerce3"}>
@@ -111,6 +116,11 @@ export default class Header extends React.Component {
                                     <NavDropdown.Item href="#covid" className={"text-ecommerce4"}>Creer une annonce</NavDropdown.Item>
                                 </Link>
                             </NavDropdown>
+                        }
+                        {
+                            this.state.isConnected && <Button variant={"danger"} onClick={this.deco}>
+                                Se deconnecter
+                            </Button>
                         }
                     </Nav>
                     <Form inline>

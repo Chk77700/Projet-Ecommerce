@@ -2,6 +2,7 @@
   "name": "ecommerce-front",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://www.thingiverse.com",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -9,6 +10,7 @@
     "axios": "^0.19.2",
     "material-ui": "^0.20.2",
     "react": "^16.13.1",
+    "react-blink-text": "^1.0.5",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-router-dynamic-breadcrumbs": "^2.2.0",
