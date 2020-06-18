@@ -45,6 +45,7 @@ export default class PageAccueil extends Component{
                             <Link style={{ textDecoration: 'inherit'}} to="/nouveaute">Dernières Nouveautés</Link>
                             <Link style={{ textDecoration: 'inherit'}} to="/vendeur">Nos vendeurs</Link>
                             <Link style={{ textDecoration: 'inherit'}} to="/reduction">Réduction</Link>
+                            <Link style={{ textDecoration: 'inherit'}} to="/cadeaux">Chèques-cadeaux</Link>
                         </div>
                     </div>
                     <div className="main-padding-top">
