@@ -37,7 +37,6 @@ export default class PageAccueil extends Component{
                                     {/* <button></button> */}
                                     <span className="button-t"><Link to="/register" style={{ textDecoration: 'none' }}>Rejoindre</Link></span>
                                 </div>
-                                <br></br>
                             </div>
                         </div>
                     </div>
