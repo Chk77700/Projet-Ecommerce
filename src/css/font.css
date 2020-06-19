@@ -263,3 +263,26 @@ li{
 .fa-check{
     margin: 10px;
 }
+
+
+.test-test-un{
+    padding-bottom: 20px;
+}
+
+.test-test{
+    width: 1200px;
+    display: flex;
+    padding: 20px;
+    border: 1px solid #bdc3c7;
+    /* border-radius: ; */
+}
+
+.dwdwwd{
+    /* background: red; */
+    padding: 20px;
+}
+
+.test-photo{
+    /* background: blue; */
+    height: 200px;
+}
