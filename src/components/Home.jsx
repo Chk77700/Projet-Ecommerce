@@ -26,6 +26,13 @@ import PageAccueil from "./PageAccueil";
 import Footer from "./Footer";
 import Default from "./Default";
 
+
+import Meilleur from "./Menu/Meilleur";
+import ChequeCadeaux from "./Menu/ChequeCadeaux";
+import Nouveaute from "./Menu/Nouveaute";
+import Reduction from "./Menu/Reduction";
+import Vendeur from "./Menu/Vendeur";
+
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -77,7 +84,13 @@ export default class Home extends React.Component {
                             refreshConnect={this.refreshConnect}/>
                     <Headers/>
                     <Switch>
-                        <Route path="/" exact component={PageAccueil}/>
+                        <Route path="/" exact component={PageAccueil} />
+                        <Route path="/meilleur" component={Meilleur} />
+                        <Route path="/cadeaux" component={ChequeCadeaux} />
+                        <Route path="/nouveaute" component={Nouveaute} />
+                        <Route path="/reduction" component={Reduction} />
+                        <Route path="/vendeur" component={Vendeur} />
+                        
                         <Route path={"/populaires"}>
                             <MostViewed/>
                         </Route>
