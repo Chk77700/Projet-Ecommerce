@@ -4,6 +4,8 @@ import "../css/font.css";
 import Axios from "axios";
 import {Button, Card, Col, Container, Row, Image } from "react-bootstrap";
 
+import Menu from "./Menu";
+
 export default class PageAccueil extends Component{
     constructor(props) {
         super(props);
@@ -40,11 +42,7 @@ export default class PageAccueil extends Component{
                         </div>
                     </div>
                     <div className="container-header-link">
-                        <div className="header-link">
-                            <Link style={{ textDecoration: 'inherit'}} to="/meilleur">Meilleurs ventes</Link>
-                            <Link style={{ textDecoration: 'inherit'}} to="/nouveaute">Dernières Nouveautés</Link>
-                            <Link style={{ textDecoration: 'inherit'}} to="/nouveaute">Nos vendeurs</Link>
-                        </div>
+                        <Menu />
                     </div>
                     <div className="main-padding-top">
                         <div className="container container-background">
@@ -65,6 +63,7 @@ export default class PageAccueil extends Component{
                                                                                 Details
                                                                             </Button>
                                                                         </Link>
+                                                                        <p>{x.name}</p>
                                                             </Card.Footer>
                                                         </Col>
                                                     </>
