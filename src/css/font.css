@@ -256,6 +256,7 @@ li{
 
 .image-confiance{
     margin: 7px;
+    border-radius: 5px;
 }
 .confiance-p{
     margin: 12px;
@@ -285,4 +286,17 @@ li{
 .test-photo{
     /* background: blue; */
     height: 200px;
+}
+
+.main-rencontre-p{
+    padding-left: 90px;
+    padding-right: 30px;
+}
+
+.main-rencontre-image{
+    padding-right: 90px;
+}
+
+.main-confiance-image{
+    padding-left: 90px;
 }
