@@ -144,20 +144,28 @@ export default class PageAccueil extends Component{
                     </div>
                     <div className="main-padding-top main-confiance-top">
                         <div className="container main-confiance container-background">
-                            <div>
-                                <div>
-                                    <Image className="image-confiance" width="280" height="170" src={require('../images/un.png')} alt="image qui represante la confiance" />
-                                    <Image className="image-confiance" width="280" height="170" src={require('../images/deux.png')} alt="image qui represante la securite" />
-                                </div>
+                            <div className="main-confiance-image">
+                                <Image className="image-confiance" width="280" height="170" src={require('../images/deux.png')} alt="image qui represante la securite" />
                             </div>
-                            <div>
-                                <div>
-                                    <h2>Faites nous confiance</h2>
-                                    <p className="confiance-p"><i class="fas fa-check"></i>protection de données</p>
-                                    <p className="confiance-p"><i class="fas fa-check"></i>Service supplémentaire: marquage de pièce, personnalisation</p>
-                                    <p className="confiance-p"><i class="fas fa-check"></i>Vérification de la production</p>
-                                    <p className="confiance-p"><i class="fas fa-check"></i>Certification des matériaux</p>
-                                </div>
+                            <div className="">
+                                <h2>Faites nous confiance</h2>
+                                <p className="confiance-p"><i class="fas fa-check"></i>protection de données</p>
+                                <p className="confiance-p"><i class="fas fa-check"></i>Service supplémentaire: marquage de pièce, personnalisation</p>
+                                <p className="confiance-p"><i class="fas fa-check"></i>Vérification de la production</p>
+                                <p className="confiance-p"><i class="fas fa-check"></i>Certification des matériaux</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="main-padding-top main-confiance-top">
+                        <div className="container main-confiance container-background">
+                            <div className="main-rencontre-p">
+                                <h2>Fais des rencontres</h2>
+                                <p className="confiance-p"><i class="fas fa-check"></i>Pour toutes les générations</p>
+                                <p className="confiance-p"><i class="fas fa-check"></i>Créez-toi un réseau d'ami</p>
+                                <p className="confiance-p"><i class="fas fa-check"></i>Partage nous tes impressions 3D</p>
+                            </div>
+                            <div className="main-rencontre-image">
+                                <Image className="image-confiance" width="280" height="170" src={require('../images/un.png')} alt="image qui represante la confiance" />
                             </div>
                         </div>
                     </div>
