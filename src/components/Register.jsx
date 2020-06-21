@@ -119,12 +119,13 @@ export default class Register extends Component {
                 <span className="logo-back">
                     {/*<Link to="/"><i className="fas fa-arrow-left"></i></Link>*/}
                 </span>
-                    <h1 className="header">S'inscire</h1>
+                    <h3 className="header">Inscription</h3>
                     <form onSubmit={this.onSubmit}>
                         <div className="form">
                             <div>
-                                <h3 className="h3-register">TON NOM D'UTILISATEUR</h3>
-                                <TextField
+                                <h3 className="h3-register"></h3>
+                                <label>Votre Pseudo :</label><div></div>
+                                <TextField style={{ width: '230px' }}
                                     id="username"
                                     name="username"
                                     type="text"
@@ -136,22 +137,26 @@ export default class Register extends Component {
                                 />
                             </div>
                             <div>
-                                <h3 className="h3-register">IMFORMATION DU COMPTE</h3>
-                                <TextField
+                                <div>
+                                <h3 className="h3-register :"></h3>
+                                    <label> Votre Adresse E-mail :</label><div></div>
+                                <TextField style={{ width: '230px' }}
                                     id="email"
                                     name="email"
                                     type="email"
-                                    placeholder="E-mail"
+                                    placeholder=" Adresse E-mail"
                                     helperText={errors.email}
                                     error={errors.email ? true : false}
                                     value={this.state.email}
                                     onChange={this.onChangeEmail}
                                 />
-                                <TextField
+                                </div>
+                                <label>Confirmez votre Adresse E-mail :</label><div></div>
+                                <TextField  style={{ width: '230px' }}
                                     type="email"
                                     name="emailconfirm"
                                     id="emailconfirm"
-                                    placeholder="confirmer votre adresse e-mail"
+                                    placeholder="confirmez votre adresse e-mail"
                                     helperText={errors.emailconfirm}
                                     error={errors.emailconfirm ? true : false}
                                     required value={this.state.emailconfirm}
@@ -159,24 +164,26 @@ export default class Register extends Component {
                                 />
                                 <div>
                                     <div>
-                                        <TextField
+                                        <label>Mot de passe :</label><div></div>
+                                        <TextField style={{ width: '230px' }}
                                             id="password"
                                             name="password"
                                             placeholder="Mot de passe"
                                             helperText={errors.password}
                                             error={errors.password ? true : false}
                                             type={this.state.hidden ? "password" : "text"}
-                                            value={this.state.passowrd}
+                                            value={this.state.password}
                                             onChange={this.onChangePassword}
                                         />
                                         <i className="fas fa-eye" onClick={this.showPassword}></i>
                                     </div>
                                     <div>
-                                        <TextField
+                                        <label>Confirmez Votre mot de passse</label><div></div>
+                                        <TextField style={{ width: '230px' }}
                                             type={this.state.hidden ? "password" : "text"}
                                             name="passwordconfirm"
                                             id="passwordconfirm"
-                                            placeholder="Confirmer votre mot de passe"
+                                            placeholder="Confirmez votre mot de passe"
                                             helperText={errors.passwordconfirm}
                                             error={errors.passwordconfirm ? true : false}
                                             value={this.state.passwordconfirm}
@@ -188,7 +195,7 @@ export default class Register extends Component {
                                         if(this.state.vendeur === false) await this.setState({vendeur: true});
                                         else await this.setState({vendeur: false});
                                         console.log(this.state.vendeur)
-                                    }} type="checkbox" label="Je suis un vendeur" />
+                                    }} type="checkbox" label="Cochez la case si vous souhaité être vendeur :" />
                                 </div>
                             </div>
                         </div>
@@ -203,7 +210,7 @@ export default class Register extends Component {
                                 variante="contained"
                                 color="primary"
                                 onClick={() => this.setState({register: null})}>
-                                Se connnecter
+                                Se Connecter
                             </Button>
                         </div>
                     </form>
