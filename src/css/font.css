@@ -85,7 +85,7 @@
     display: flex;
     justify-content: space-between;
 }
-    
+
 .main-devis-h1{
     color: rgb(255, 255, 255);
     width: 400px;
@@ -105,7 +105,7 @@
 }
 .main-temoignage-h1{
     text-align: center;
-}   
+}
 .main-temoignage-deux{
     /* background: red; */
     padding-top: 20px;
@@ -266,28 +266,6 @@ li{
 }
 
 
-.test-test-un{
-    padding-bottom: 20px;
-}
-
-.test-test{
-    width: 1200px;
-    display: flex;
-    padding: 20px;
-    border: 1px solid #bdc3c7;
-    /* border-radius: ; */
-}
-
-.dwdwwd{
-    /* background: red; */
-    padding: 20px;
-}
-
-.test-photo{
-    /* background: blue; */
-    height: 200px;
-}
-
 .main-rencontre-p{
     padding-left: 90px;
     padding-right: 30px;
@@ -299,4 +277,16 @@ li{
 
 .main-confiance-image{
     padding-left: 90px;
+}
+
+
+.header {
+    color: dodgerblue;
+}
+label {
+    margin: 15px 10px 5px 0px;
+}
+textfield {
+    color: red;
+    background-color: red;
 }

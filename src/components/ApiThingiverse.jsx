@@ -18,7 +18,9 @@ export default class ApiThingiverse extends React.Component {
 
     searchModel = () => {
         Axios.get(`/search?q=${this.state.search}&type=things&sort=relevant&page=${this.state.page}`)
-            .then((response) => this.setState({result: response.data, showPage: true}))
+            .then((response) => {
+                if (typeof (response.data) === "object") this.setState({result: response.data, showPage: true})
+            })
     }
 
     precedent = () => {

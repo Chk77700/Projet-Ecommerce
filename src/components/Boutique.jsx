@@ -1,7 +1,8 @@
 import React from "react";
 import Axios from "axios";
-import {Button, Card, Col, Container, Row} from "react-bootstrap";
+import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import Blink from "react-blink-text";
 //TODO: comfirmation suppression
 export default class Boutique extends React.Component {
     constructor(props) {
@@ -31,9 +32,69 @@ export default class Boutique extends React.Component {
 
     }
 
+    changeTri = (e) => {
+        if (e.target.value === "1") this.triCroissant();
+        if (e.target.value === "2") this.triDecroissant();
+        if (e.target.value === "3") this.triAlpha();
+        if (e.target.value === "4") this.triAlphaInverse();
+    }
+
+    triCroissant = () => {
+        let articles = this.state.articles;
+        for (let i = 0; i < articles.length - 1; i++)
+            for (let j = 0; j < articles.length - 1; j++)
+                if (articles[j].price > articles[j + 1].price) {
+                    const temp = articles[j];
+                    articles[j] = articles[j + 1];
+                    articles[j + 1] = temp;
+                    i = 0;
+                }
+        this.setState({articles: articles});
+    }
+
+    triDecroissant = () => {
+        let articles = this.state.articles;
+        for (let i = 0; i < articles.length - 1; i++)
+            for (let j = 0; j < articles.length - 1; j++)
+                if (articles[j].price < articles[j + 1].price) {
+                    const temp = articles[j];
+                    articles[j] = articles[j + 1];
+                    articles[j + 1] = temp;
+                    i = 0;
+                }
+        this.setState({articles: articles});
+    }
+
+    triAlpha = () => {
+        let articles = this.state.articles;
+        articles.sort((x, y) => x.name.localeCompare(y.name));
+        this.setState({articles: articles});
+    }
+
+    triAlphaInverse = () => {
+        let articles = this.state.articles;
+        articles.sort((x, y) => y.name.localeCompare(x.name));
+        this.setState({articles: articles});
+    }
+
     render() {
         return (
             <Container>
+                <Row>
+                    <Col>
+                        Trier par:
+                    </Col>
+                    <Col>
+                        <Form.Control as="select" onChange={this.changeTri} custom>
+                            <option>Choisissez un tri</option>
+                            <option value={1}>Prix par ordre croissant</option>
+                            <option value={2}>Prix par ordre decroissant</option>
+                            <option value={3}>Prix par ordre alphabetique</option>
+                            <option value={4}>Prix par ordre alphabetique inverse</option>
+                        </Form.Control>
+                    </Col>
+                </Row>
+                <hr/>
                 <Row>
                     {
                         this.state.articles.map((x, i) => (
@@ -42,6 +103,9 @@ export default class Boutique extends React.Component {
                                     <Card.Img style={style.boutique} variant="top"
                                               src={`http://localhost:8000${x.photo}`}/>
                                     <Card.Body>
+                                        {new Date().getTime() - Date.parse(x.date) < 604800000 && <h3 className={"text-ecommerce4"}>
+                                            Nouveaute!
+                                        </h3>}
                                         <Card.Text className="text-ecommerce1">
                                             <h3 className="text-ecommerce2">{x.name}</h3>
                                             {x.description}

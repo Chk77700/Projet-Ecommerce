@@ -161,7 +161,7 @@ export default class Panier extends React.Component {
                                                   src={`http://localhost:8000${x.photo}`}/>
                                     }
                                     {
-                                        x.photo.split(".")[x.photo.split(".").length - 1] === "stl" || x.photo.split(".")[x.photo.split(".").length - 1] === "STL" &&
+                                        x.photo.split(".")[x.photo.split(".").length - 1] === "stl" | x.photo.split(".")[x.photo.split(".").length - 1] === "STL" &&
                                         <STLViewer
                                             model={x.photo}
                                             width={300}

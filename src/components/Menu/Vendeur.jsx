@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "../../css/font.css";
 
 export default class Vendeur extends Component {
-    
+
     constructor(props) {
         super(props);
         this.state = {
@@ -48,30 +48,30 @@ export default class Vendeur extends Component {
         return (
             <Container>
                 <Row className="qwerty">
-                        {
-                            this.state.view && this.state.membre.map((x, i) => (
-                                <>
-                                    <div className="test-test-un">
-                                        <div className="test-test">
-                                            <Col lg={4} sm={4} md={4}>
-                                                <Card key={i} style={style.boutique} onClick={(e) => this.changeShop(e, i)} >
-                                                    <Card.Img value={i} variant="top" src={`http://localhost:8000${x.photo}`} className="test-photo" />
-                                                </Card>
-                                            </Col>
-                                            <Col lg={7} sm={7} md={7} className="dwdwwd">
-                                                <p>Nom : {x.username}</p>
-                                                <p>Email : {x.email}</p>
-                                                <p>Nombre de figurine :</p>
-                                                <p>Nombre de vue total {x.views}:</p>
-                                            </Col>
-                                            <Col lg={1} sm={1} md={1}>
-                                                <Link><button>Faire un devis</button></Link>
-                                            </Col>
-                                        </div>
+                    {
+                        this.state.view && this.state.membre.map((x, i) => (
+                            <>
+                                <div className="test-test-un">
+                                    <div className="test-test">
+                                        <Col lg={4} sm={4} md={4}>
+                                            <Card key={i} style={style.boutique} onClick={(e) => this.changeShop(e, i)} >
+                                                <Card.Img value={i} variant="top" src={`http://localhost:8000${x.photo}`} className="test-photo" />
+                                            </Card>
+                                        </Col>
+                                        <Col lg={7} sm={7} md={7} className="dwdwwd">
+                                            <p>Nom : {x.username}</p>
+                                            <p>Email : {x.email}</p>
+                                            <p>Nombre de figurine :</p>
+                                            <p>Nombre de vue total {x.views}:</p>
+                                        </Col>
+                                        <Col lg={1} sm={1} md={1}>
+                                            <Link><button>Faire un devis</button></Link>
+                                        </Col>
                                     </div>
-                                </>
-                            ))
-                        }
+                                </div>
+                            </>
+                        ))
+                    }
                 </Row>
             </Container>
         )

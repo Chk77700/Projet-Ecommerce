@@ -12,7 +12,7 @@ export default function SuiviCommandeDetail() {
             .then(res => {
                 if (res.data !== commande) setCommande(res.data);
             });
-    });
+    }, [id]);
 
     const changeStatut = async (e) => {
         const res = await Axios.post("http://localhost:8000/modifyStatut", {

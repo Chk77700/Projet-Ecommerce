@@ -45,7 +45,7 @@ export default class Home extends React.Component {
             taille += parseInt(panier[i].total);
         if (localStorage.getItem("userId") !== null)
             isConnected = true;
-            else isConnected = null;
+        else isConnected = null;
         this.state = {
             taillePanier: taille,
             idUser: localStorage.getItem("userId"),
@@ -90,7 +90,7 @@ export default class Home extends React.Component {
                         <Route path="/nouveaute" component={Nouveaute} />
                         <Route path="/reduction" component={Reduction} />
                         <Route path="/vendeur" component={Vendeur} />
-                        
+
                         <Route path={"/populaires"}>
                             <MostViewed/>
                         </Route>

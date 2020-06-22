@@ -32,7 +32,7 @@ export default class PageAccueil extends Component{
                         <div className="container">
                             <div className="header-page">
                                 <h1 className="header-h1-color">Just think, they print</h1>
-                                <p className="header-p-color">Rejoins plus de 500 000 mille personnes qui utilisent Print'n go pour partager leurs impressions 3D, ou découvrir les réalisations de nos imprimeurs.</p>
+                                <p className="header-p-color">Rejoins plus de 500 000 personnes qui utilisent Print'n go pour partager leurs impressions 3D, ou découvrir les réalisations de nos imprimeurs.</p>
                                 <div>
                                     {/* <button></button> */}
                                     <span className="button-t"><Link to="/register" style={{ textDecoration: 'none' }}>Rejoindre</Link></span>
@@ -57,12 +57,12 @@ export default class PageAccueil extends Component{
                                                         <Col lg={4} sm={12} md={6}>
                                                             <Card.Img style={style.boutique} variant="top" src={`http://localhost:8000${x.photo}`}/>
                                                             <Card.Footer>
-                                                                        <Link to={`/article/${x.id}`}>
-                                                                            <Button value={i} variant={"ecommerce3"}>
-                                                                                Details
-                                                                            </Button>
-                                                                        </Link>
-                                                                        <p>{x.name}</p>
+                                                                <Link to={`/article/${x.id}`}>
+                                                                    <Button value={i} variant={"ecommerce3"}>
+                                                                        Details
+                                                                    </Button>
+                                                                </Link>
+                                                                <p>{x.name}</p>
                                                             </Card.Footer>
                                                         </Col>
                                                     </>
@@ -110,7 +110,7 @@ export default class PageAccueil extends Component{
                             </div>
                             <div>
                                 <img className="image-tendance-limite" height="350" width="350" src={require('../images/Ecommerce13.png')} />
-                            </div>        
+                            </div>
                         </div>
                     </div>
                     <div className="main-padding-top">
@@ -124,14 +124,14 @@ export default class PageAccueil extends Component{
                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, quia sit eveniet numquam, corporisLorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, eos aut dolorum.</p>
                                     </div>
                                 </div>
-                                
+
                                 <div className="main-temoignage-para container-background">
                                     <div className="temoignage-padding">
                                         <img className="image-tendance-limite" height="110" width="110" src={require('../images/Ecommerce10.png')} />
                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, quia sit eveniet numquam, corporisLorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, eos aut dolorum.</p>
                                     </div>
                                 </div>
-                                
+
                                 <div className="main-temoignage-para container-background">
                                     <div className="temoignage-padding">
                                         <img className="image-tendance-limite" height="110" width="110" src={require('../images/Ecommerce10.png')} />
