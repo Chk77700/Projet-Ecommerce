@@ -165,7 +165,7 @@ export default class Register extends Component {
                             </div>
                             <div className="register-input">
                                 {/* <label>Mot de passe :</label> */}
-                                <TextField style={{ width: '230px' }}
+                                <TextField style={{ width: '230px', marginLeft:'19px' }}
                                             id="password"
                                             name="password"
                                             placeholder="Mot de passe"
@@ -179,7 +179,7 @@ export default class Register extends Component {
                             </div>
                             <div className="register-input">
                                 {/* <label>Confirmez Votre mot de passse</label> */}
-                                <TextField style={{ width: '230px' }}
+                                <TextField style={{ width: '230px', marginLeft:'19px' }}
                                             type={this.state.hidden ? "password" : "text"}
                                             name="passwordconfirm"
                                             id="passwordconfirm"
