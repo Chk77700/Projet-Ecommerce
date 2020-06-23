@@ -68,7 +68,6 @@ export default class PageAccueil extends Component{
                                 <h1 className="header-h1-color">Just think, they print</h1>
                                 <p className="header-p-color">Rejoins plus de 500 000 mille personnes qui utilisent Print'n go pour partager leurs impressions 3D, ou découvrir les réalisations de nos imprimeurs.</p>
                                 <div>
-                                    {/* <button></button> */}
                                     <span className="button-t"><Link to="/register" style={{ textDecoration: 'none' }}>Rejoindre</Link></span>
                                 </div>
                             </div>
