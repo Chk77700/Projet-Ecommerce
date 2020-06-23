@@ -290,3 +290,40 @@ textfield {
     color: red;
     background-color: red;
 }
+
+
+
+.slide-un{
+    /* display: inline-block; */
+    /* opacity: 6; */
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.slide-deux{
+    /* overflow: hidden; */
+    /* position: relative; */
+    width: 1494px;
+    display: none;
+    position: relative;
+}
+.slide-trois{
+    margin-right: 20px;
+}
+.slide-quatre{
+    margin-right: 200px;
+    height: 178px;
+}
+
+.move-btn-main{
+    display: flex;
+    justify-content: space-between;
+}
+.move-btn{
+    display: flex;
+}
+
+.left{
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
