@@ -91,7 +91,7 @@ export default class Header extends React.Component {
                                 <Row>
                                     <Col sm={6}>
                                         <Button variant={"ecommerce2"} onClick={this.login}>
-                                            Connection
+                                            Connexion
                                         </Button>
                                     </Col>
                                     <Col sm={6}>
