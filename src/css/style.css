@@ -28,9 +28,11 @@
     padding-right: 90px;
 }
 .register-input{
-    margin: 20px;
+    margin: 15px;
     border: 1px solid rgb(175, 165, 165);
     border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .form-check{
     padding-bottom: 30px;
