@@ -1,10 +1,12 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from '@material-ui/core/Button';
 import {Form} from "react-bootstrap";
 import axios from 'axios';
-import Login from "./Login";
+// import Login from "./Login";
+
+import "../css/style.css"
 
 export default class Register extends Component {
     constructor(props) {
@@ -93,7 +95,7 @@ export default class Register extends Component {
             .post("http://localhost:8000/register", user, config)
             .then(res => {
                 if (res.data)
-                    window.location = "http://localhost:3000/home";
+                    window.location = "http://localhost:3000";
                 else this.setState({error: "erreur"})
                 console.log(res.data);
                 // this.setState({
@@ -113,106 +115,102 @@ export default class Register extends Component {
     render() {
 
         const {errors} = this.state;
+        let k = 0;
 
         return (
             <div className="container-register">
-                <span className="logo-back">
-                    {/*<Link to="/"><i className="fas fa-arrow-left"></i></Link>*/}
-                </span>
-                <h3 className="header">Inscription</h3>
+                <h3 className="register-h3">DEVENEZ MEMBRE DE PRINT'N GO</h3>
+                <p className="register-p">Créez-toi un profil de vendeur pour rejoindre notre communauté et partager tes oeuvres où devient membre Print'n go en tant que client pour accéder au meilleur des produits publiés par nos vendeur.</p>
                 <form onSubmit={this.onSubmit}>
-                    <div className="form">
-                        <div>
-                            <h3 className="h3-register"></h3>
-                            <label>Votre Pseudo :</label><div></div>
-                            <TextField style={{ width: '230px' }}
-                                       id="username"
-                                       name="username"
-                                       type="text"
-                                       placeholder="Nom d'utilisateur"
-                                       helperText={errors.username}
-                                       error={errors.username ? true : false}
-                                       value={this.state.username}
-                                       onChange={this.onChangeUsername}
-                            />
-                        </div>
-                        <div>
-                            <div>
-                                <h3 className="h3-register :"></h3>
-                                <label> Votre Adresse E-mail :</label><div></div>
+                    <div className="register-form">
+                        <div className="register-form-two">
+                            <div className="register-input">
+                                {/* <label>Votre Pseudo :</label> */}
                                 <TextField style={{ width: '230px' }}
-                                           id="email"
-                                           name="email"
-                                           type="email"
-                                           placeholder=" Adresse E-mail"
-                                           helperText={errors.email}
-                                           error={errors.email ? true : false}
-                                           value={this.state.email}
-                                           onChange={this.onChangeEmail}
+                                        id="username"
+                                        name="username"
+                                        type="text"
+                                        placeholder="Nom d'utilisateur"
+                                        helperText={errors.username}
+                                        error={errors.username ? true : false}
+                                        value={this.state.username}
+                                        onChange={this.onChangeUsername}
                                 />
                             </div>
-                            <label>Confirmez votre Adresse E-mail :</label><div></div>
-                            <TextField  style={{ width: '230px' }}
-                                        type="email"
-                                        name="emailconfirm"
-                                        id="emailconfirm"
-                                        placeholder="confirmez votre adresse e-mail"
-                                        helperText={errors.emailconfirm}
-                                        error={errors.emailconfirm ? true : false}
-                                        required value={this.state.emailconfirm}
-                                        onChange={this.onChangeEmailconfirm}
-                            />
-                            <div>
-                                <div>
-                                    <label>Mot de passe :</label><div></div>
-                                    <TextField style={{ width: '230px' }}
-                                               id="password"
-                                               name="password"
-                                               placeholder="Mot de passe"
-                                               helperText={errors.password}
-                                               error={errors.password ? true : false}
-                                               type={this.state.hidden ? "password" : "text"}
-                                               value={this.state.password}
-                                               onChange={this.onChangePassword}
-                                    />
-                                    <i className="fas fa-eye" onClick={this.showPassword}></i>
-                                </div>
-                                <div>
-                                    <label>Confirmez Votre mot de passse</label><div></div>
-                                    <TextField style={{ width: '230px' }}
-                                               type={this.state.hidden ? "password" : "text"}
-                                               name="passwordconfirm"
-                                               id="passwordconfirm"
-                                               placeholder="Confirmez votre mot de passe"
-                                               helperText={errors.passwordconfirm}
-                                               error={errors.passwordconfirm ? true : false}
-                                               value={this.state.passwordconfirm}
-                                               onChange={this.onChangePasswordconfirm}
-                                    />
-                                    <i className="fas fa-eye" onClick={this.showPassword}></i>
-                                </div>
-                                <Form.Check onChange={async() => {
+                            <div className="register-input">
+                                {/* <label> Votre Adresse E-mail :</label> */}
+                                <TextField style={{ width: '230px' }}
+                                            id="email"
+                                            name="email"
+                                            type="email"
+                                            placeholder=" Adresse E-mail"
+                                            helperText={errors.email}
+                                            error={errors.email ? true : false}
+                                            value={this.state.email}
+                                            onChange={this.onChangeEmail}
+                                />
+                            </div>
+                            <div className="register-input">
+                                {/* <label>Confirmez votre Adresse E-mail :</label> */}
+                                <TextField  style={{ width: '230px' }}
+                                            type="email"
+                                            name="emailconfirm"
+                                            id="emailconfirm"
+                                            placeholder="confirmez votre adresse e-mail"
+                                            helperText={errors.emailconfirm}
+                                            error={errors.emailconfirm ? true : false}
+                                            required value={this.state.emailconfirm}
+                                            onChange={this.onChangeEmailconfirm}
+                                />
+                            </div>
+                            <div className="register-input">
+                                {/* <label>Mot de passe :</label> */}
+                                <TextField style={{ width: '230px' }}
+                                            id="password"
+                                            name="password"
+                                            placeholder="Mot de passe"
+                                            helperText={errors.password}
+                                            error={errors.password ? true : false}
+                                            type={this.state.hidden ? "password" : "text"}
+                                            value={this.state.password}
+                                            onChange={this.onChangePassword}
+                                />
+                                <i className="fas fa-eye" onClick={this.showPassword}></i>
+                            </div>
+                            <div className="register-input">
+                                {/* <label>Confirmez Votre mot de passse</label> */}
+                                <TextField style={{ width: '230px' }}
+                                            type={this.state.hidden ? "password" : "text"}
+                                            name="passwordconfirm"
+                                            id="passwordconfirm"
+                                            placeholder="Confirmez votre mot de passe"
+                                            helperText={errors.passwordconfirm}
+                                            error={errors.passwordconfirm ? true : false}
+                                            value={this.state.passwordconfirm}
+                                            onChange={this.onChangePasswordconfirm}
+                                />
+                                <i className="fas fa-eye" onClick={this.showPassword}></i>
+                            </div>
+                        </div>                        
+                    </div>
+                    <Form.Check onChange={async() => {
                                     if(this.state.vendeur === false) await this.setState({vendeur: true});
                                     else await this.setState({vendeur: false});
                                     console.log(this.state.vendeur)
                                 }} type="checkbox" label="Cochez la case si vous souhaité être vendeur :" />
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <Button
-                            type="submit"
-                            variante="contained"
-                            color="primary">
-                            Creer un compte
-                        </Button>
-                        <Button
-                            variante="contained"
-                            color="primary"
-                            onClick={() => this.setState({register: null})}>
-                            Se Connecter
-                        </Button>
-                    </div>
+                    <Button
+                        type="submit"
+                        variante="contained"
+                        color="primary"
+                        className="register-button e">
+                        REJOIGNEZ-NOUS
+                    </Button>
+                    {/* <Button
+                        variante="contained"
+                        color="primary"
+                        onClick={() => this.setState({register: null})}>
+                        Se Connecter
+                    </Button>     */}
                 </form>
             </div>
         )
