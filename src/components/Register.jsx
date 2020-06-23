@@ -119,6 +119,15 @@ export default class Register extends Component {
 
         return (
             <div className="container-register">
+                <div style={{paddingBottom: "30px"}}>
+                    <img
+                        src="/logo.png"
+                        width="60"
+                        height="60"
+                        className="d-inline-block align-top"
+                        alt="React Bootstrap logo"
+                    />
+                </div>
                 <h3 className="register-h3">DEVENEZ MEMBRE DE PRINT'N GO</h3>
                 <p className="register-p">Créez-toi un profil de vendeur pour rejoindre notre communauté et partager tes oeuvres où devient membre Print'n go en tant que client pour accéder au meilleur des produits publiés par nos vendeur.</p>
                 <form onSubmit={this.onSubmit}>
