@@ -6,12 +6,38 @@ import {Button, Card, Col, Container, Row, Image } from "react-bootstrap";
 
 import Menu from "./Menu";
 
+
+const BackArrow = () => (
+    <div style={{fontSize: '25px'}}  className="left" onClick={ActiveLeft}>
+        <i class="fas fa-chevron-left"></i>
+    </div>
+)
+
+const NextArrow = () => (
+    <div style={{fontSize: '25px'}} className="right" onClick={ActiveRight}>
+        <i class="fas fa-chevron-right"></i>
+    </div>
+)
+
+function ActiveLeft() {
+    console.log("left")
+}
+
+function ActiveRight() {
+    console.log("right")
+}
+
 export default class PageAccueil extends Component{
     constructor(props) {
         super(props);
+
+        this.nextImage = this.nextImage.bind(this);
+        this.previousImage = this.previousImage.bind(this);
+
         this.state = {
             idUser: localStorage.getItem("userId"),
-            articles: []
+            articles: [],
+            slideCount: 0,
         };
     }
 
@@ -21,7 +47,15 @@ export default class PageAccueil extends Component{
 
     getMostViewed = () => {
         Axios.post("http://localhost:8000/mostViewed", {id: this.state.idUser})
-            .then(resp => this.setState({articles: resp.data}));
+            .then( resp => this.setState({articles: resp.data}));
+    }
+
+    nextImage() {
+        this.setState({ slideCount: this.state.slideCount + 1 })
+    }
+    
+    previousImage() {
+        this.setState({ slideCount: this.state.slideCount - 1 })
     }
 
     render () {
@@ -32,7 +66,7 @@ export default class PageAccueil extends Component{
                         <div className="container">
                             <div className="header-page">
                                 <h1 className="header-h1-color">Just think, they print</h1>
-                                <p className="header-p-color">Rejoins plus de 500 000 personnes qui utilisent Print'n go pour partager leurs impressions 3D, ou découvrir les réalisations de nos imprimeurs.</p>
+                                <p className="header-p-color">Rejoins plus de 500 000 mille personnes qui utilisent Print'n go pour partager leurs impressions 3D, ou découvrir les réalisations de nos imprimeurs.</p>
                                 <div>
                                     {/* <button></button> */}
                                     <span className="button-t"><Link to="/register" style={{ textDecoration: 'none' }}>Rejoindre</Link></span>
@@ -45,34 +79,42 @@ export default class PageAccueil extends Component{
                     </div>
                     <div className="main-padding-top">
                         <div className="container container-background">
-                            <div>
+
                                 <h2 className="main-tendance">Les réalisations les plus demandés</h2>
-                                {/* <p>(par example un ajout de like, de vue etc...)</p> */}
                                 <div className="main-tendance-image">
-                                    <Container>
-                                        <Row>
-                                            {
-                                                this.state.articles.map((x, i) => (
-                                                    <>
-                                                        <Col lg={4} sm={12} md={6}>
-                                                            <Card.Img style={style.boutique} variant="top" src={`http://localhost:8000${x.photo}`}/>
-                                                            <Card.Footer>
-                                                                <Link to={`/article/${x.id}`}>
-                                                                    <Button value={i} variant={"ecommerce3"}>
-                                                                        Details
-                                                                    </Button>
-                                                                </Link>
-                                                                <p>{x.name}</p>
-                                                            </Card.Footer>
-                                                        </Col>
-                                                    </>
-                                                ))
-                                            }
+
+                                    <div className="move-btn-main">
+                                        <Link to="/populaires" className="main-devis-p" style={{ textDecoration: 'inherit'}} >Tout voir</Link>
+                                        <div className="move-btn">
+                                            {this.state.slideCount !== 1 ? <BackArrow previousImage={this.previousImage}/> : ''}
+                                            {this.state.slideCount !== (this.state.articles.length - 1) ? <NextArrow nextImage={this.nextImage}/> : ''}
+                                        </div>
+                                    </div>
+
+                                    <Container className="slide-un">
+                                        <Row className="slide-deux">
+                                                
+                                                
+                                                {this.state.articles.map((x, i) => (
+                                                    <Col className="slide-trois">
+                                                        <Card.Img className="slide-quatre" variant="top" src={`http://localhost:8000${x.photo}`}/>
+                                                        <Card.Footer>
+                                                                    <Link to={`/article/${x.id}`}>
+                                                                        <Button value={i} variant={"ecommerce3"}>
+                                                                            Details
+                                                                        </Button>
+                                                                    </Link>
+                                                                    <p>{x.name}</p>
+                                                        </Card.Footer>
+                                                    </Col>
+                                                ))}
+
+                                                 
                                         </Row>
                                     </Container>
+
                                 </div>
-                                <Link to="/populaires" className="main-devis-p" style={{ textDecoration: 'inherit'}} >Tout voir</Link>
-                            </div>
+
                         </div>
                     </div>
 
@@ -110,7 +152,7 @@ export default class PageAccueil extends Component{
                             </div>
                             <div>
                                 <img className="image-tendance-limite" height="350" width="350" src={require('../images/Ecommerce13.png')} />
-                            </div>
+                            </div>        
                         </div>
                     </div>
                     <div className="main-padding-top">
@@ -124,14 +166,14 @@ export default class PageAccueil extends Component{
                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, quia sit eveniet numquam, corporisLorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, eos aut dolorum.</p>
                                     </div>
                                 </div>
-
+                                
                                 <div className="main-temoignage-para container-background">
                                     <div className="temoignage-padding">
                                         <img className="image-tendance-limite" height="110" width="110" src={require('../images/Ecommerce10.png')} />
                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, quia sit eveniet numquam, corporisLorem ipsum dolor sit amet consectetur adipisicing elit. Laborum aliquam necessitatibus provident quibusdam aliquid beatae, cupiditate reiciendis doloribus voluptatem dolores ipsam corrupti, eos aut dolorum.</p>
                                     </div>
                                 </div>
-
+                                
                                 <div className="main-temoignage-para container-background">
                                     <div className="temoignage-padding">
                                         <img className="image-tendance-limite" height="110" width="110" src={require('../images/Ecommerce10.png')} />
