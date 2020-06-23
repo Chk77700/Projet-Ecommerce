@@ -113,13 +113,13 @@ export default class Header extends React.Component {
                                     <NavDropdown.Item href="#covid" className={"text-ecommerce4"}>Suivi de mes commandes</NavDropdown.Item>
                                 </Link>
                                 <Link to={"/createArticle"}>
-                                    <NavDropdown.Item href="#covid" className={"text-ecommerce4"}>Creer une annonce</NavDropdown.Item>
+                                    <NavDropdown.Item href="#covid" className={"text-ecommerce4"}>Créer une annonce</NavDropdown.Item>
                                 </Link>
                             </NavDropdown>
                         }
                         {
                             this.state.isConnected && <Button variant={"danger"} onClick={this.deco}>
-                                Se deconnecter
+                                Se déconnecter
                             </Button>
                         }
                     </Nav>
