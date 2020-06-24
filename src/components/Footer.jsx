@@ -5,7 +5,7 @@ export default class Footer extends Component {
     render () {
         return (
             <footer>
-                <div className="footer-un">
+                <div className="footer-un d-print-none">
                     <section className="container">
                         <div className="footer-about">
                             <div className="footer-container-about">
@@ -62,11 +62,11 @@ export default class Footer extends Component {
                 <div className="footer-deux">
                     <section className="container">
                         <div className="footer-logo">
-                            <a href="https://fr-fr.facebook.com/" className="footer-a-logo" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/?hl=fr" className="footer-a-logo" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="https://twitter.com/explore" className="footer-a-logo" target="_blank"><i class="fab fa-twitter"></i></a>
-                            <a href="https://www.youtube.com/" className="footer-a-logo" target="_blank"><i class="fab fa-youtube"></i></a>
-                            <a href="https://gitlab.com/" className="footer-a-logo" target="_blank"><i class="fab fa-gitlab"></i></a>
+                            <a href="https://fr-fr.facebook.com/" className="footer-a-logo d-print-none" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/?hl=fr" className="footer-a-logo d-print-none" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://twitter.com/explore" className="footer-a-logo d-print-none" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.youtube.com/" className="footer-a-logo d-print-none" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="https://gitlab.com/" className="footer-a-logo d-print-none" target="_blank"><i class="fab fa-gitlab"></i></a>
                         </div>
                     </section>
                 </div>

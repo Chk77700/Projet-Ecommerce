@@ -86,7 +86,7 @@ export default class Panier extends React.Component {
     changePays = async (e) => {
         await this.setState({
             livraison: this.state.pays[e.target.value].prix,
-            idPays: this.state.pays[e.target.value].id
+            idPays: this.state.pays[e.target.value].id - 1
         });
         this.refreshPanier();
     }
@@ -235,7 +235,7 @@ export default class Panier extends React.Component {
                         </Col>
                         <Col>
                             <h5>Vos informations bancaires:</h5>
-                            <FormControl type="number" placeholder="Votre numero de carte" value={this.state.numeroCarte}
+                            <FormControl type="" placeholder="Votre numero de carte" value={this.state.numeroCarte}
                                          onChange={(e) => this.setState({numeroCarte: e.target.value})}/>
                             <FormControl type="number" placeholder="Votre CCV" value={this.state.ccvCarte}
                                          onChange={(e) => this.setState({ccvCarte: e.target.value})}/>

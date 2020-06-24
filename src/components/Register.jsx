@@ -93,7 +93,7 @@ export default class Register extends Component {
             .post("http://localhost:8000/register", user, config)
             .then(res => {
                 if (res.data)
-                    window.location = "http://localhost:3000/home";
+                    window.location = "http://localhost:3000/";
                 else this.setState({error: "erreur"})
                 console.log(res.data);
                 // this.setState({

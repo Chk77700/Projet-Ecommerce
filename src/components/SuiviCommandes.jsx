@@ -20,13 +20,32 @@ export default class SuiviCommandes extends React.Component {
         this.setState({commandes: commandes.data});
     }
 
+    s2ab = (s) => {
+        const buf = new ArrayBuffer(s.length);
+        let view = new Uint8Array(buf);
+        for (let i=0; i !== s.length; ++i)
+            view[i] = s.charCodeAt(i) & 0xFF;
+        return buf;
+    }
+
+    toExcel = async () => {
+        window.location = `http://localhost:8000/toExcel?id=${localStorage.getItem("userId")}`;
+    }
+
     render() {
         return (
             <Container>
-                <h3 className={"text-ecommerce3"}>
+                <h3 className={"text-ecommerce2"}>
+                    Recuperer vos informations sous forme d'excel:
+                </h3>
+                <Button variant={"ecommerce4"} onClick={this.toExcel}>
+                    Telecharger
+                </Button>
+                <hr/>
+                <h3 className={"text-ecommerce2"}>
                     Recapitulatif des commandes qui vous ont ete passees:
                 </h3>
-                <br/>
+                <hr/>
                 {this.state.commandes.length === 0 && <h4 className={"text-danger"}>Aucunes commandes</h4>}
                 {
                     this.state.commandes.map((x, i) => (
@@ -43,7 +62,7 @@ export default class SuiviCommandes extends React.Component {
                                 <Card.Footer>
                                     <Row>
                                         <Col>
-                                            <h5>{`Date: ${x.date}`}</h5>
+                                            <h5>{`Date: ${new Date(Date.parse(x.date)).toString()}`}</h5>
                                         </Col>
                                         <Col>
                                             <Link to={`/suiviCommandeDetail/${x.id}`}>

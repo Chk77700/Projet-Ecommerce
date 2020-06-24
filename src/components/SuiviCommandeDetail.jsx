@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {Card, Col, Container, Form, Image, Row} from "react-bootstrap";
+import {Button, Card, Col, Container, Form, Image, Row} from "react-bootstrap";
 import Axios from "axios";
 
 export default function SuiviCommandeDetail() {
@@ -26,6 +26,10 @@ export default function SuiviCommandeDetail() {
         <>
             {commande.map((x, i) => (
                 <Container key={i}>
+                    <Button className={"d-print-none"} variant={"ecommerce4"} onClick={(e) => window.print()}>
+                        Imprimer une Facture
+                    </Button>
+                    <hr/>
                     <Row>
                         <Col >
 

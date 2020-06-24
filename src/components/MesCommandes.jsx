@@ -79,7 +79,7 @@ export default class MesCommandes extends React.Component {
                                 <Card.Footer>
                                     <Row>
                                         <Col>
-                                            <h5>{`Date: ${x.date}`}</h5>
+                                            <h5>{`Date: ${new Date(Date.parse(x.date)).toString()}`}</h5>
                                         </Col>
                                         <Col>
                                             <Link to={`/commandeDetail/${x.id}`}>
@@ -93,7 +93,6 @@ export default class MesCommandes extends React.Component {
                             </Card>
                         </>
                     )}
-
                 {isFind &&
                 <>
                     <Card>

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {Card, Col, Container, Image, Row} from "react-bootstrap";
+import {Button, Card, Col, Container, Image, Row} from "react-bootstrap";
 import Axios from "axios";
 
 export default function CommandeDetail() {
@@ -19,9 +19,12 @@ export default function CommandeDetail() {
         <>
             {commande.map((x, i) => (
                 <Container key={i} style={{marginBottom: "100px"}}>
+                    <Button className={"d-print-none"} variant={"ecommerce4"} onClick={(e) => window.print()}>
+                        Imprimer une Facture
+                    </Button>
+                    <hr/>
                     <Row>
                         <Col >
-
                             <Card.Img variant="top" src={`http://localhost:8000${x.detailArticle.photo}`}/>
                             <h3>{`Article: ${x.detailArticle.name}`}</h3>
                             <h3>{`Prix: ${x.total}€`}</h3>

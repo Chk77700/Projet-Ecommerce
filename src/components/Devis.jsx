@@ -50,6 +50,7 @@ export default class Devis extends React.Component {
                         custom
                     />
                 </Form>
+                <hr/>
                 <ApiThingiverse stl={this.getStlFromAPI}/>
             </Container>
         )
