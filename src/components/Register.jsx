@@ -206,7 +206,7 @@ export default class Register extends Component {
                                     if(this.state.vendeur === false) await this.setState({vendeur: true});
                                     else await this.setState({vendeur: false});
                                     console.log(this.state.vendeur)
-                                }} type="checkbox" label="Cochez la case si vous souhaité être vendeur :" />
+                                }} type="checkbox" label="Cochez la case si vous souhaité être vendeur" />
                     <Button
                         type="submit"
                         variante="contained"

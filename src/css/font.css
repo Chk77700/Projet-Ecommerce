@@ -327,3 +327,22 @@ textfield {
     margin-right: 10px;
     margin-bottom: 10px;
 }
+
+.nom-du-site{
+    color: rgb(231,130,4);
+    padding-right: 20px;
+}
+
+.text-devis{
+    color: rgb(231,130,4);
+    font-size: 25px;
+    padding-top: 5px;
+}
+.footer-devis-padding{
+    padding-bottom: 200px;
+}
+.boutiques-p-padding{
+    color: rgb(231,130,4);
+    font-size: 25px;
+    padding-top: 30px;
+}

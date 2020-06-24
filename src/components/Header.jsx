@@ -3,6 +3,8 @@ import {Navbar, Nav, NavDropdown, Form, FormControl, Button, Badge, Row, Col} fr
 import {Link} from "react-router-dom";
 import Axios from "axios";
 
+import "../css/font.css"
+
 export default class Header extends React.Component {
 
     constructor(props) {
@@ -123,6 +125,7 @@ export default class Header extends React.Component {
                             </Button>
                         }
                     </Nav>
+                    <h1 className="nom-du-site">Print'n go</h1>
                     <Form inline>
                         <FormControl type="text" onChange={(e) => this.setState({search: `/search/${e.target.value}`})}
                                      placeholder="Recherchez un objet" className="mr-sm-2"/>

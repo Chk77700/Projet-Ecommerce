@@ -5,6 +5,8 @@ import ApiThingiverse from "./ApiThingiverse";
 import StlDevis from "./StlDevis";
 import StlUpload from "./StlUpload";
 
+
+
 export default class Devis extends React.Component {
     constructor(props) {
         super(props);
@@ -32,7 +34,7 @@ export default class Devis extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container className="footer-devis-padding">
                 <Row>
                     {this.state.showSTL && this.state.url.map((x, i) => (<Row>
                         <StlDevis path={this.state.path} url={x} refresh={this.props.refresh}/>
@@ -43,6 +45,7 @@ export default class Devis extends React.Component {
                     }
                 </Row>
                 <Form>
+                    <p className="text-devis">Envoyez-nous une image de votre pièce pour obtenir un devis.</p>
                     <Form.File
                         id="custom-file"
                         label="Choisissez un fichier stl"
@@ -50,6 +53,7 @@ export default class Devis extends React.Component {
                         custom
                     />
                 </Form>
+                <p className="text-devis">Faites une recherche pour obtenir la pièce que vous souhaitez.</p>
                 <ApiThingiverse stl={this.getStlFromAPI}/>
             </Container>
         )

@@ -31,7 +31,6 @@ import Meilleur from "./Menu/Meilleur";
 import ChequeCadeaux from "./Menu/ChequeCadeaux";
 import Nouveaute from "./Menu/Nouveaute";
 import Reduction from "./Menu/Reduction";
-import Vendeur from "./Menu/Vendeur";
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -89,7 +88,6 @@ export default class Home extends React.Component {
                         <Route path="/cadeaux" component={ChequeCadeaux} />
                         <Route path="/nouveaute" component={Nouveaute} />
                         <Route path="/reduction" component={Reduction} />
-                        <Route path="/vendeur" component={Vendeur} />
 
                         <Route path={"/populaires"}>
                             <MostViewed/>
