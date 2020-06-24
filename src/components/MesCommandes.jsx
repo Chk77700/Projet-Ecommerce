@@ -48,21 +48,21 @@ export default class MesCommandes extends React.Component {
         const isFind = this.state.isFind;
 
         return (
-            <Container>
-                <Form inline>
+            <Container className="mes-commandes-padding">
+                <Form inline className="recherche-mes-commande">
                     <FormControl type="text" onChange={(e) => this.setState({searchTerm: e.target.value})}
                                  placeholder="Recherchez un objet" className="mr-sm-2"/>
                     <Link to={this.state.search}>
-                        <Button onClick={this.getSearchOrder}>rechercher</Button>
+                        <Button onClick={this.getSearchOrder} style={{background: "rgb(231,130,4)"}}>rechercher</Button>
                     </Link>
                 </Form>
                 <h3 className={"text-ecommerce3"}>
-                    Recapitulatif de vos commandes:
+                    Récapitulatif de vos commandes:
                 </h3>
                 <br/>
 
                 {this.state.commandes.length === 0 && <h4 className={"text-danger"}>Aucunes commandes</h4>}
-                {this.state.search === 0 && <h4 className={"text-danger"}>Aucun resultat</h4>}
+                {this.state.search === 0 && <h4 className={"text-danger"}>Aucun résultat</h4>}
 
                 {
                     this.state.commandes.map((x, i) =>
@@ -84,7 +84,7 @@ export default class MesCommandes extends React.Component {
                                         <Col>
                                             <Link to={`/commandeDetail/${x.id}`}>
                                                 <Button variant={"ecommerce3"}>
-                                                    Details
+                                                    Détails
                                                 </Button>
                                             </Link>
                                         </Col>
@@ -113,7 +113,7 @@ export default class MesCommandes extends React.Component {
                                 <Col>
                                     <Link to={`/commandeDetail/${result.id}`}>
                                         <Button variant={"ecommerce3"}>
-                                            Details
+                                            Détails
                                         </Button>
                                     </Link>
                                 </Col>

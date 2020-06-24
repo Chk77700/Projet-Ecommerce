@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Card, Col, Form, FormControl, Row} from "react-bootstrap";
+import {Button, Card, Col, Form, FormControl, Row, Container} from "react-bootstrap";
 import Axios from "axios";
 import STLViewer from "stl-viewer";
 import {Link} from "react-router-dom";
@@ -150,57 +150,59 @@ export default class Panier extends React.Component {
     render() {
         return (
             <>
-                <Row>
-                    {this.state.panier.map((x, i) => (
-                        <>
-                            <Col lg={4} sm={12} md={6}>
-                                <Card bg={"light"} key={i}>
-                                    {
-                                        x.photo.split(".")[x.photo.split(".").length - 1] !== "stl" && x.photo.split(".")[x.photo.split(".").length - 1] !== "STL" &&
-                                        <Card.Img style={style.boutique} variant="top"
-                                                  src={`http://localhost:8000${x.photo}`}/>
-                                    }
-                                    {
-                                        x.photo.split(".")[x.photo.split(".").length - 1] === "stl" | x.photo.split(".")[x.photo.split(".").length - 1] === "STL" &&
-                                        <STLViewer
-                                            model={x.photo}
-                                            width={300}
-                                            height={300}
-                                            modelColor={"red"}
-                                            backgroundColor='#EAEAEA'
-                                            rotate={true}
-                                            orbitControls={true}
-                                        />
-                                    }
-                                    <Card.Body>
-                                        <Card.Text className="text-ecommerce1">
-                                            <h3 className="text-ecommerce2">{x.name}</h3>
-                                            {x.description}
-                                        </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                        <Row>
-                                            <Col>
-                                                <h4>{`${x.price}€`}</h4>
-                                            </Col>
-                                            <Col>
-                                                <h5>{`${x.total} articles`}</h5>
-                                                <FormControl type="number" value={x.total}
-                                                             onChange={(e) => this.changeTotal(e, i)}/>
-                                            </Col>
-                                            <Col>
-                                                <Button value={i} variant={"danger"} onClick={this.deletePanier}>
-                                                    Supprimer
-                                                </Button>
-                                            </Col>
-                                        </Row>
-                                    </Card.Footer>
-                                </Card>
-                                <br/>
-                            </Col>
-                        </>
-                    ))}
-                </Row>
+                <Container className="mon-panier-padding">
+                    <Row>
+                        {this.state.panier.map((x, i) => (
+                            <>
+                                <Col lg={4} sm={12} md={6}>
+                                    <Card bg={"light"} key={i}>
+                                        {
+                                            x.photo.split(".")[x.photo.split(".").length - 1] !== "stl" && x.photo.split(".")[x.photo.split(".").length - 1] !== "STL" &&
+                                            <Card.Img style={style.boutique} variant="top"
+                                                    src={`http://localhost:8000${x.photo}`}/>
+                                        }
+                                        {
+                                            x.photo.split(".")[x.photo.split(".").length - 1] === "stl" | x.photo.split(".")[x.photo.split(".").length - 1] === "STL" &&
+                                            <STLViewer
+                                                model={x.photo}
+                                                width={300}
+                                                height={300}
+                                                modelColor={"red"}
+                                                backgroundColor='#EAEAEA'
+                                                rotate={true}
+                                                orbitControls={true}
+                                            />
+                                        }
+                                        <Card.Body>
+                                            <Card.Text className="text-ecommerce1">
+                                                <h3 className="text-ecommerce2">{x.name}</h3>
+                                                {x.description}
+                                            </Card.Text>
+                                        </Card.Body>
+                                        <Card.Footer>
+                                            <Row>
+                                                <Col>
+                                                    <h4>{`${x.price}€`}</h4>
+                                                </Col>
+                                                <Col>
+                                                    <h5>{`${x.total} articles`}</h5>
+                                                    <FormControl type="number" value={x.total}
+                                                                onChange={(e) => this.changeTotal(e, i)}/>
+                                                </Col>
+                                                <Col>
+                                                    <Button value={i} variant={"danger"} onClick={this.deletePanier}>
+                                                        Supprimer
+                                                    </Button>
+                                                </Col>
+                                            </Row>
+                                        </Card.Footer>
+                                    </Card>
+                                    <br/>
+                                </Col>
+                            </>
+                        ))}
+                    </Row>
+                </Container>
                 <h5 className={"text-ecommerce4"}>
                     {`Total: ${this.state.total}€`}
                 </h5>

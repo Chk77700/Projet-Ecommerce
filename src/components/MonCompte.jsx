@@ -88,7 +88,8 @@ export default class MonCompte extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container className="mon-compte-padding">
+                <p className="mon-compte-p">Modifier vos données personnelles :</p>
                 <Row>
                     <Col>
                         <h5 className={"text-success"}>{this.state.photo}</h5>
@@ -96,7 +97,7 @@ export default class MonCompte extends React.Component {
                         <hr/>
                         {
                             this.state.isSub && <Button variant={"danger"} onClick={this.unSub}>
-                                Se desabonner
+                                Se désabonner
                             </Button>
                         }
                         {

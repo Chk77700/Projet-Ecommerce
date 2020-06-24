@@ -22,9 +22,9 @@ export default class SuiviCommandes extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container className="suivi-commandes-padding">
                 <h3 className={"text-ecommerce3"}>
-                    Recapitulatif des commandes qui vous ont ete passees:
+                    Récapitulatif des commandes qui vous ont été passé :
                 </h3>
                 <br/>
                 {this.state.commandes.length === 0 && <h4 className={"text-danger"}>Aucunes commandes</h4>}
@@ -48,7 +48,7 @@ export default class SuiviCommandes extends React.Component {
                                         <Col>
                                             <Link to={`/suiviCommandeDetail/${x.id}`}>
                                                 <Button variant={"ecommerce3"}>
-                                                    Details
+                                                    Détails
                                                 </Button>
                                             </Link>
                                         </Col>

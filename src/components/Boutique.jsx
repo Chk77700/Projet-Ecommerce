@@ -79,7 +79,7 @@ export default class Boutique extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container className="ma-boutique-padding">
                 <Row>
                     <Col>
                         Trier par:

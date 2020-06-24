@@ -29,7 +29,7 @@ export default class AnnonceForm extends React.Component {
 
     render() {
         return (
-            <Container style={{marginTop: "20px"}}>
+            <Container style={{marginTop: "20px"}} className="annonce-form-padding">
                 <Form>
                     <Row>
                         <Col>
@@ -41,7 +41,7 @@ export default class AnnonceForm extends React.Component {
                                           onChange={val => this.setState({price: val.target.value})}/>
                         </Col>
                     </Row>
-                    <Form.Control required style={{marginTop: "20px"}} as="textarea" rows="3"
+                    <Form.Control required style={{marginTop: "20px"}} as="textarea" rows="3" placeholder="Description"
                                   onChange={val => this.setState({description: val.target.value})}/>
                     <Row style={{marginTop: "20px"}}>
                         <Col>
@@ -53,7 +53,7 @@ export default class AnnonceForm extends React.Component {
                                        onChange={val => this.setState({photo: val.target.files[0]})}/>
                         </Col>
                         <Col>
-                            <Button type={"submit"} variant={"ecommerce3"} onClick={this.sendForm}>
+                            <Button type={"submit"} variant={"ecommerce3"} onClick={this.sendForm} style={{background: "rgb(231,130,4)"}}>
                                 Valider
                             </Button>
                         </Col>
