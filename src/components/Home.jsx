@@ -6,6 +6,7 @@ import Boutiques from "./Boutiques";
 import Panier from "./Panier";
 import Axios from "axios";
 import AnnonceForm from "./AnnonceForm";
+import CategorieForm from "./CategorieForm";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Boutique from "./Boutique";
 import Modify from "./Modify";
@@ -18,6 +19,7 @@ import Register from "./Register";
 import '../css/bootstrapCommerce.css';
 import "../font/Oswald-VariableFont_wght.ttf";
 import Headers from "./BreadCrumbs/Headers";
+
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -85,6 +87,9 @@ export default class Home extends React.Component {
                                 </Route>
                                 <Route path="/createArticle">
                                     <AnnonceForm/>
+                                </Route>
+                                <Route path="/createCategorie">
+                                    <CategorieForm/>
                                 </Route>
                                 <Route path="/maBoutique">
                                     <Boutique/>

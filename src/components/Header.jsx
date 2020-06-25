@@ -100,6 +100,9 @@ export default class Header extends React.Component {
                                 <Link to={"/createArticle"}>
                                     <NavDropdown.Item href="#covid">Creer une annonce</NavDropdown.Item>
                                 </Link>
+                                <Link to={"/createCategorie"}>
+                                    <NavDropdown.Item href="#categorie">Categorie</NavDropdown.Item>
+                                </Link>
                             </NavDropdown>
                         }
                     </Nav>
