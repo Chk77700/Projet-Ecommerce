@@ -9,6 +9,11 @@
 *::after {
   box-sizing: border-box; }
 
+::selection{
+  background-color: #E78200;
+  color: white;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;

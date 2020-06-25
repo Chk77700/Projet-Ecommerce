@@ -56,6 +56,9 @@ export default function SuiviCommandeDetail() {
                                     <h3>{`Date: ${new Date(Date.parse(x.date)).toString()}`}</h3>
                                 </Col>
                                 <Col className={"text-ecommerce2"}>
+                                    {x.emballage === 1 && <h3 className={"text-danger"}>
+                                        Emballage cadeau
+                                    </h3>}
                                     <h3 className={"text-success"}>{`${x.statut}`}</h3>
                                     <Form.Control as="select" onChange={changeStatut} custom>
                                         <option>{x.statut}</option>

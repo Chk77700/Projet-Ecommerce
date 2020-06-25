@@ -51,12 +51,13 @@ export default class MesCommandes extends React.Component {
             <Container>
                 <Form inline>
                     <FormControl type="text" onChange={(e) => this.setState({searchTerm: e.target.value})}
-                                 placeholder="Recherchez un objet" className="mr-sm-2"/>
+                                 placeholder="Rentrez l'id de votre commande" className="mr-sm-2"/>
                     <Link to={this.state.search}>
                         <Button onClick={this.getSearchOrder}>rechercher</Button>
                     </Link>
                 </Form>
-                <h3 className={"text-ecommerce3"}>
+                <hr/>
+                <h3 className={"text-ecommerce1"}>
                     Recapitulatif de vos commandes:
                 </h3>
                 <br/>
@@ -65,7 +66,7 @@ export default class MesCommandes extends React.Component {
                 {this.state.search === 0 && <h4 className={"text-danger"}>Aucun resultat</h4>}
 
                 {
-                    this.state.commandes.map((x, i) =>
+                    !isFind && this.state.commandes.map((x, i) =>
                         <>
                             <Card key={i}>
                                 <Card.Header>
@@ -83,7 +84,7 @@ export default class MesCommandes extends React.Component {
                                         </Col>
                                         <Col>
                                             <Link to={`/commandeDetail/${x.id}`}>
-                                                <Button variant={"ecommerce3"}>
+                                                <Button variant={"ecommerce4"}>
                                                     Details
                                                 </Button>
                                             </Link>
@@ -111,7 +112,7 @@ export default class MesCommandes extends React.Component {
                                 </Col>
                                 <Col>
                                     <Link to={`/commandeDetail/${result.id}`}>
-                                        <Button variant={"ecommerce3"}>
+                                        <Button variant={"ecommerce4"}>
                                             Details
                                         </Button>
                                     </Link>

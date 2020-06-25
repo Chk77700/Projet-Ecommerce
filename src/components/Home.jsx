@@ -83,6 +83,7 @@ export default class Home extends React.Component {
                             isConnected={this.state.isConnected}
                             refreshConnect={this.refreshConnect}/>
                     <Headers/>
+                    <main>
                     <Switch>
                         <Route path="/" exact component={PageAccueil} />
                         <Route path="/meilleur" component={Meilleur} />
@@ -138,6 +139,7 @@ export default class Home extends React.Component {
                         </Route>
                         <Route component={Default} />
                     </Switch>
+                    </main>
                 </div>
                 <Footer/>
             </Router>
