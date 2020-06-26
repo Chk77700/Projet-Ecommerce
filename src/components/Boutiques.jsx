@@ -83,7 +83,7 @@ export default class Boutiques extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container className="ma-boutique-padding">
                 <p className="boutiques-p-padding">Vous pouvez consulter tous nos vendeurs :</p>
                 <Row>
                     {

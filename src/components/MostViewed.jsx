@@ -68,7 +68,7 @@ export default class MostViewed extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container className="container-mostView">
                 <Row>
                     <Col>
                         Trier par:

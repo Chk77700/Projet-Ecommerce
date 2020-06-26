@@ -90,7 +90,7 @@ export default class PageAccueil extends Component {
                                     <Container>
                                         <Carousel>
                                             {this.state.articles.map((x, i) => (
-                                                <Carousel.Item>
+                                                <Carousel.Item className="carousel-articles">
                                                     <img src={`http://localhost:8000${x.photo}`}/>
                                                     <Link to={`/article/${x.id}`}>
                                                     <Carousel.Caption>

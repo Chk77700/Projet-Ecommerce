@@ -331,6 +331,8 @@ textfield {
 .nom-du-site{
     color: rgb(231,130,4);
     padding-right: 20px;
+    font-size: 25px;
+    padding-top: 10px;
 }
 
 .text-devis{
@@ -370,10 +372,35 @@ textfield {
     padding-bottom: 110px;
 }
 .ma-boutique-padding{
-    padding-top: 100px;
+    padding-top: 10px;
     padding-bottom: 110px;
+}
+.ma-boutique-compte-padding{
+    padding-top: 135px;
+    padding-bottom: 140px;
 }
 .mon-panier-padding{
     padding-top: 100px;
     padding-bottom: 110px;
+}
+
+.container-annonceForm{
+    padding-top: 90px;
+    padding-bottom: 40px;
+}
+.container-categorieForm{
+    padding-top: 90px;
+    padding-bottom: 40px;
+}
+.container-mostView{
+    padding-top: 90px;
+    padding-bottom: 190px;
+}
+
+.carousel-articles{
+
+}
+.carousel-articles img{
+    width: 300px;
+    height: 200px;
 }

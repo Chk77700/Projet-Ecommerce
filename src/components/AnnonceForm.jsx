@@ -29,7 +29,7 @@ export default class AnnonceForm extends React.Component {
 
     render() {
         return (
-            <Container style={{marginTop: "20px"}}>
+            <Container style={{marginTop: "20px"}} className="container-annonceForm">
                 <Form>
                     <Row>
                         <Col>

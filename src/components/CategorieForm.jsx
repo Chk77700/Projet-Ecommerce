@@ -23,7 +23,7 @@ export default class CategorieForm extends React.Component {
 
     render() {
         return (
-            <Container style={{marginTop: "20px"}}>
+            <Container style={{marginTop: "20px"}} className="container-categorieForm">
                 <Form>
                     <Row>
                         <Col>

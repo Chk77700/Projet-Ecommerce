@@ -87,7 +87,7 @@ export default class Header extends React.Component {
                                 {
                                     !this.state.isConnected &&
                                     <NavDropdown title="Se Connecter" id="basic-nav-dropdown">
-                                        {this.state.error && <p className={"text-danger"}>Mauvais identifiants!</p>}
+                                        {this.state.error && <p className={"text-danger"}>Mauvais identifiants !</p>}
                                         <FormControl autoFocus className="mx-3 my-2 w-auto" placeholder="Email"
                                                      onChange={(e) => this.setState({email: e.target.value})}/>
                                         <FormControl type={"password"} className="mx-3 my-2 w-auto"
@@ -96,7 +96,7 @@ export default class Header extends React.Component {
                                         <Row>
                                             <Col sm={6}>
                                                 <Button variant={"ecommerce2"} onClick={this.login}>
-                                                    Connection
+                                                    Connexion
                                                 </Button>
                                             </Col>
                                             <Col sm={6}>
@@ -121,11 +121,11 @@ export default class Header extends React.Component {
                                                 commandes</NavDropdown.Item>
                                         </Link>
                                         <Link to={"/createArticle"}>
-                                            <NavDropdown.Item href="#covid" className={"text-ecommerce4"}>Creer une
+                                            <NavDropdown.Item href="#covid" className={"text-ecommerce4"}>Créer une
                                                 annonce</NavDropdown.Item>
                                         </Link>
                                         <Link to={"/createCategorie"}>
-                                            <NavDropdown.Item href="#categorie">Categorie</NavDropdown.Item>
+                                            <NavDropdown.Item href="#categorie">Catégorie</NavDropdown.Item>
                                         </Link>
                                     </NavDropdown>
                                 }
@@ -135,6 +135,7 @@ export default class Header extends React.Component {
                                     </Button>
                                 }
                             </Nav>
+                            <p className="nom-du-site">Print'n go</p>
                             <Form inline>
                                 <FormControl type="text"
                                              onChange={(e) => this.setState({search: `/search/${e.target.value}`})}

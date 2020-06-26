@@ -48,7 +48,7 @@ export default class MesCommandes extends React.Component {
         const isFind = this.state.isFind;
 
         return (
-            <Container>
+            <Container className="mes-commandes-padding">
                 <Form inline>
                     <FormControl type="text" onChange={(e) => this.setState({searchTerm: e.target.value})}
                                  placeholder="Rentrez l'id de votre commande" className="mr-sm-2"/>
