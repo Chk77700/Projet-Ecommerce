@@ -58,7 +58,7 @@ export default class Article extends React.Component {
                                                   src={`http://localhost:8000${x.photo}`}/>
                                     </Col>
                                     <Col>
-                                        {new Date().getTime() - Date.parse(x.date) < 604800000 && <Blink color='#E7751F' text='Nouveaute!' style={{fontSize: 25}}/>}
+                                        {new Date().getTime() - Date.parse(x.date) < 604800000 && <Blink color='#E7751F' text='Nouveauté !' style={{fontSize: 25}}/>}
                                         <Card.Body>
                                             <Card.Text className="text-ecommerce1">
                                                 <h3 className="text-ecommerce2">{x.name}</h3>
