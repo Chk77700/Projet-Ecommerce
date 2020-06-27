@@ -427,3 +427,13 @@ textfield {
 .photo-articles-de-chaque-vendeur{
     height: 260px;
 }
+.div-tuto{
+    text-align: center;
+}
+.link-tuto{
+    color: rgb(231,130,4);
+    font-size: 25px;
+}
+.photo-dans-le-panier{
+    height: 230px;
+}
