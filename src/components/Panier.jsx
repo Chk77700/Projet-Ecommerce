@@ -183,7 +183,7 @@ export default class Panier extends React.Component {
                                     {
                                         x.photo.split(".")[x.photo.split(".").length - 1] !== "stl" && x.photo.split(".")[x.photo.split(".").length - 1] !== "STL" &&
                                         <Card.Img style={style.boutique} variant="top"
-                                                  src={`http://localhost:8000${x.photo}`}/>
+                                                  src={`http://localhost:8000${x.photo}`} className="photo-dans-le-panier"/>
                                     }
                                     {
                                         x.photo.split(".")[x.photo.split(".").length - 1] === "stl" | x.photo.split(".")[x.photo.split(".").length - 1] === "STL" &&
@@ -228,7 +228,7 @@ export default class Panier extends React.Component {
                 </Row>
                 {this.state.date.getMonth() === 5 && <Row>
                     <Form style={{marginLeft: "50px"}} className={"text-success"}>
-                        <Form.Check type="radio" label="Beneficiez d'un emballage gratuit!" onChange={(e) => this.setState({emballage: true})}/>
+                        <Form.Check type="radio" label="Bénéficiez d'un emballage gratuit !" onChange={(e) => this.setState({emballage: true})}/>
                     </Form>
                 </Row>}
                 <h5 className={"text-ecommerce4"}>
@@ -236,7 +236,7 @@ export default class Panier extends React.Component {
                 </h5>
                 {
                     this.state.isSub && <h5 className={"text-success"}>
-                        {`Vous avec economise ${this.state.economie}€ grace a votre abonement premium!`}
+                        {`Vous avez economié ${this.state.economie}€ grâce à votre abonnement premium !`}
                     </h5>
                 }
                 <Row>
@@ -266,7 +266,7 @@ export default class Panier extends React.Component {
                         <Col>
                             {!this.state.showCCV && <>
                                 <h5>Vos informations bancaires:</h5>
-                                <FormControl type="" placeholder="Votre numero de carte" value={this.state.numeroCarte}
+                                <FormControl type="" placeholder="Votre numéro de carte" value={this.state.numeroCarte}
                                              onChange={(e) => this.setState({numeroCarte: e.target.value})}/>
                                 <FormControl type="number" placeholder="Votre CCV" value={this.state.ccvCarte}
                                              onChange={(e) => this.setState({ccvCarte: e.target.value})}/>
