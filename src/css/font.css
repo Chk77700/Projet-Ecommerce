@@ -376,8 +376,8 @@ textfield {
     padding-bottom: 110px;
 }
 .ma-boutique-compte-padding{
-    padding-top: 135px;
-    padding-bottom: 140px;
+    padding-top: 60px;
+    padding-bottom: 190px;
 }
 .mon-panier-padding{
     padding-top: 100px;
@@ -401,3 +401,18 @@ textfield {
     width: 500px;
     height: 500px;
 }   
+
+.photo-de-ma-boutique{
+    height: 240px;
+}
+.ma-boutique-p{
+    font-size: 40px;
+    color: rgb(231,130,4);
+    padding-bottom: 20px;
+    text-align: center;
+}
+.ma-boutique-p-two{
+    padding-bottom: 20px;
+    text-align: center;
+    color: rgb(141, 131, 131);
+}
