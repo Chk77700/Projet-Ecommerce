@@ -416,3 +416,11 @@ textfield {
     text-align: center;
     color: rgb(141, 131, 131);
 }
+.nom-du-vendeur-dans-boutiques{
+    background: rgb(231,130,4);
+    border-radius: 5px;
+    text-align: center;
+    max-width: 240px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
