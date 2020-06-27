@@ -84,7 +84,7 @@ export default class Boutiques extends React.Component {
     render() {
         return (
             <Container className="ma-boutique-padding">
-                <p className="boutiques-p-padding">Vous pouvez consulter tous nos vendeurs :</p>
+                <p className="boutiques-p-padding">Liste de tous les vendeurs de Print'n go :</p>
                 <Row>
                     {
                         this.state.showBoutiques && this.state.boutiques.map((x, i) => (
