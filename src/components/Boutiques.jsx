@@ -91,14 +91,16 @@ export default class Boutiques extends React.Component {
                             <>
                                 <Col lg={4} sm={12} md={6}>
                                     <Card key={i} style={style.boutique} onClick={(e) => this.changeShop(e, i)}>
-                                        <Card.Img value={i} variant="top" src={`http://localhost:8000${x.photo}`}/>
+                                        {/* <Card.Img value={i} variant="top" src={`http://localhost:8000${x.photo}`}/> */}
                                         <Card.Body>
                                             <Card.Text className="text-ecommerce2">
-                                                <h3>{x.username}</h3>
-                                                <h5>
+                                                <p>Nom du vendeur : {x.username}</p>
+                                                <p>Nombre d'article: </p>
+                                                <p className="nom-du-vendeur-dans-boutiques">Cliquez pour afficher les produits</p>
+                                                {/* <h5>
                                                     {x.covid && <Badge variant={"ecommerce1"}>Covid</Badge>}
                                                     {x.urgences && <Badge variant={"ecommerce1"}>Urgences</Badge>}
-                                                </h5>
+                                                </h5> */}
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
