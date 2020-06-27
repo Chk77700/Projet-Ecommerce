@@ -133,7 +133,7 @@ export default class Boutiques extends React.Component {
                                     <Col lg={4} sm={12} md={6}>
                                         <Card key={i}>
                                             <Card.Img style={style.boutique} variant="top"
-                                                      src={`http://localhost:8000${x.photo}`}/>
+                                                      src={`http://localhost:8000${x.photo}`} className="photo-articles-de-chaque-vendeur"/>
                                             <Card.Body>
                                                 <Card.Text className="text-ecommerce1">
                                                     <h3 className="text-ecommerce2">{x.name}</h3>
