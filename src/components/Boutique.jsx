@@ -80,6 +80,8 @@ export default class Boutique extends React.Component {
     render() {
         return (
             <Container className="ma-boutique-compte-padding">
+                <p className="ma-boutique-p">Ma boutique en tant que vendeur</p>
+                <p className="ma-boutique-p-two">Vous avez la possibilité de modifier vos produits, d'ajouter vos produits autant de fois que vous le souhaitez !</p>
                 <Row>
                     <Col>
                         Trier par:
@@ -101,7 +103,7 @@ export default class Boutique extends React.Component {
                             <Col lg={4} sm={12} md={6}>
                                 <Card key={i}>
                                     <Card.Img style={style.boutique} variant="top"
-                                              src={`http://localhost:8000${x.photo}`}/>
+                                              src={`http://localhost:8000${x.photo}`} className="photo-de-ma-boutique" />
                                     <Card.Body>
                                         {new Date().getTime() - Date.parse(x.date) < 604800000 && <h3 className={"text-ecommerce4"}>
                                             Nouveaute!
