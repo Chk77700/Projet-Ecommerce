@@ -25,8 +25,7 @@ import SuiviCommandeDetail from "./SuiviCommandeDetail";
 import PageAccueil from "./PageAccueil";
 import Footer from "./Footer";
 import Default from "./Default";
-
-
+import  Edit from './modifierCommande';
 import Meilleur from "./Menu/Meilleur";
 import ChequeCadeaux from "./Menu/ChequeCadeaux";
 import Nouveaute from "./Menu/Nouveaute";
@@ -84,6 +83,9 @@ export default class Home extends React.Component {
                             refreshConnect={this.refreshConnect}/>
                     <Headers/>
                     <Switch>
+                        <Route path= "/modifiercommande">
+                            <Edit/>
+                        </Route>
                         <Route path="/" exact component={PageAccueil} />
                         <Route path="/meilleur" component={Meilleur} />
                         <Route path="/cadeaux" component={ChequeCadeaux} />

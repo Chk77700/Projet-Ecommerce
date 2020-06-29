@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ProductProvider } from "./context";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import Modifier from "./components/modifierCommande";
 import Home from "./components/views/Home";
 import Details from "./components/views/Details";
 import Product from "./components/views/Product";

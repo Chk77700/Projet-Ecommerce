@@ -1,20 +1,23 @@
-import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
-import {Card, Col, Container, Image, Row} from "react-bootstrap";
+import React, {Component, useEffect, useState} from "react";
+import {Link, useParams} from "react-router-dom";
+import {Button, Card, Col, Container, Image, Row} from "react-bootstrap";
 import Axios from "axios";
 
 export default function CommandeDetail() {
     const {id} = useParams();
     const [commande, setCommande] = useState([]);
-
     useEffect(() => {
         Axios.post("http://localhost:8000/commandeDetail", {id: id})
             .then(res => {
                 setCommande(res.data);
-                console.log(res.data);
+                const order = res.data[0].statut;
+                if(order === 'en cours de preparation') {
+
+                }
             });
     }, [id]);
-
+    const getProcessOrder = (res) => {
+    }
     return (
         <>
             {commande.map((x, i) => (
@@ -49,6 +52,12 @@ export default function CommandeDetail() {
                                     <h3 className={"text-success"}>{x.statut}</h3>
                                 </Col>
                             </Row>
+                            <Container>
+                            <Col>
+                                {x.statut === "En cours de preparation" && <Link to={'/modifiercommande'}><Button variant={"ecommerce3"}>Modifier les details de ma commande</Button>
+                                </Link>}
+                            </Col>
+                            </Container>
                         </Col>
                     </Row>
                 </Container>

@@ -2,7 +2,7 @@ import React from "react";
 import {Container, Card, Col, Button, Row} from "react-bootstrap";
 import Axios from "axios";
 import {Link} from "react-router-dom";
-
+import Modifier from './modifierCommande';
 export default class MesCommandes extends React.Component {
     constructor(props) {
         super(props);
@@ -53,6 +53,8 @@ export default class MesCommandes extends React.Component {
                                                 </Button>
                                             </Link>
                                         </Col>
+
+
                                     </Row>
                                 </Card.Footer>
                             </Card>

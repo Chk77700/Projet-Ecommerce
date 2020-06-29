@@ -90,7 +90,6 @@ export default class Panier extends React.Component {
         });
         this.refreshPanier();
     }
-
     getPays = async () => {
         const res = await Axios.post("http://localhost:8000/getPays");
         this.setState({pays: res.data});
@@ -102,7 +101,6 @@ export default class Panier extends React.Component {
         this.refreshPanier();
         this.props.refresh();
     }
-
     sendCommande = async (e) => {
         let userId = localStorage.getItem("userId");
         if (userId === null)
@@ -224,7 +222,7 @@ export default class Panier extends React.Component {
                                              onChange={(e) => this.setState({ville: e.target.value})}/>
                                 <FormControl type="text" placeholder="Votre adresse" value={this.state.adresse}
                                              onChange={(e) => this.setState({adresse: e.target.value})}/>
-                                <Form.Control as="select" onChange={this.changePays} value={this.state.idPays} custom>
+                                <Form.Control as="select" onChange={this.changePays} value={this.state.idPays}custom >
                                     {
                                         this.state.pays.map((x, i) => (
                                             <option idPays={x.id} value={x.id}>{x.pays}</option>
