@@ -87,7 +87,7 @@ export default class Header extends React.Component {
                                 {
                                     !this.state.isConnected &&
                                     <NavDropdown title="Se Connecter" id="basic-nav-dropdown">
-                                        {this.state.error && <p className={"text-danger"}>Mauvais identifiants!</p>}
+                                        {this.state.error && <p className={"text-danger"}>Mauvais identifiants !</p>}
                                         <FormControl autoFocus className="mx-3 my-2 w-auto" placeholder="Email"
                                                      onChange={(e) => this.setState({email: e.target.value})}/>
                                         <FormControl type={"password"} className="mx-3 my-2 w-auto"
@@ -121,18 +121,18 @@ export default class Header extends React.Component {
                                                 commandes</NavDropdown.Item>
                                         </Link>
                                         <Link to={"/createArticle"}>
-                                            <NavDropdown.Item href="#covid" className={"text-ecommerce4"}>Creer une
+                                            <NavDropdown.Item href="#covid" className={"text-ecommerce4"}>Créer une
                                                 annonce</NavDropdown.Item>
                                         </Link>
                                         <Link to={"/createCategorie"}>
-                                            <NavDropdown.Item href="#categorie" className={"text-ecommerce4"}>Creer une
-                                                categorie</NavDropdown.Item>
+                                            <NavDropdown.Item href="#categorie" className={"text-ecommerce4"}>Créer une
+                                                catégorie</NavDropdown.Item>
                                         </Link>
                                     </NavDropdown>
                                 }
                                 {
                                     this.state.isConnected && <Button variant={"danger"} onClick={this.deco}>
-                                        Se deconnecter
+                                        Se déconnecter
                                     </Button>
                                 }
                             </Nav>
