@@ -344,7 +344,7 @@ textfield {
 .boutiques-p-padding{
     color: rgb(231,130,4);
     font-size: 25px;
-    padding-top: 100px;
+    padding-top: 120px;
 }
 .mes-commandes-padding{
     padding-top: 100px;
@@ -376,4 +376,12 @@ textfield {
 .mon-panier-padding{
     padding-top: 100px;
     padding-bottom: 110px;
+}
+
+.taille-image-boutique{
+    height: 240px;
+}
+.container-mes-commandes{
+    padding-top: 90px;
+    padding-bottom: 90px;
 }
