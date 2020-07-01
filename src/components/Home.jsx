@@ -33,6 +33,7 @@ import '../css/bootstrapCommerce.css';
 import "../font/Oswald-VariableFont_wght.ttf";
 import "../css/style.css";
 import "../css/font.css";
+import Newest from "./Newest";
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -61,6 +62,7 @@ export default class Home extends React.Component {
             const role = await Axios.post("http://localhost:8000/getRole", {id: this.state.idUser});
             if (role.data.role === "vendeur")
                 this.setState({isAdmin: true});
+            else this.setState({isAdmin: false});
         }
     }
 
@@ -113,6 +115,9 @@ export default class Home extends React.Component {
                         </Route>
                         <Route path={"/modify/:id"}>
                             <Modify/>
+                        </Route>
+                        <Route path={"/newest"}>
+                            <Newest/>
                         </Route>
                         <Route path={"/article/:id"}>
                             <Article refresh={this.refreshPanier}/>

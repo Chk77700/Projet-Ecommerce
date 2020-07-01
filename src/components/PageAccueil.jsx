@@ -29,8 +29,11 @@ export default class PageAccueil extends Component {
             <div>
                 <main>
                     <div className="main-pageaccueil">
+                        <video style={{width: "100%", height: "50%", position: "absolute", marginTop: "-50px"}} loop autoPlay>
+                            <source src={require("../videos/Slide1.mp4")} type="video/mp4"/>
+                        </video>
                         <div className="container">
-                            <Carousel>
+                            <Carousel style={{zIndex: 4}} touch={true}>
                                 <Carousel.Item>
                                     <div style={{height: "250px"}}/>
                                     <Link style={{textDecoration: 'inherit'}} to="/populaires">
@@ -42,7 +45,7 @@ export default class PageAccueil extends Component {
                                 </Carousel.Item>
                                 <Carousel.Item>
                                     <div style={{height: "250px"}}/>
-                                    <Link style={{textDecoration: 'inherit'}} to="/nouveaute">
+                                    <Link style={{textDecoration: 'inherit'}} to="/newest">
                                         <Carousel.Caption>
                                             <h1 className={"text-ecommerce4"}>Dernières Nouveautés</h1>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -51,7 +54,7 @@ export default class PageAccueil extends Component {
                                 </Carousel.Item>
                                 <Carousel.Item>
                                     <div style={{height: "250px"}}/>
-                                    <Link style={{textDecoration: 'inherit'}} to="/vendeur">
+                                    <Link style={{textDecoration: 'inherit'}} to="/boutiques">
                                         <Carousel.Caption>
                                             <h1 className={"text-ecommerce4"}>Nos vendeurs</h1>
                                             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -83,7 +86,7 @@ export default class PageAccueil extends Component {
                         <Menu/>
                     </div>
                     <div className="main-padding-top">
-                        <div className="container container-background">
+                        <div className="container container-background bg-ecommerce1">
                             <div>
                                 <h2 className="main-tendance">Les réalisations les plus demandés</h2>
                                 <div className="main-tendance-image">

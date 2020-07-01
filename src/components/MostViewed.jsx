@@ -84,6 +84,7 @@ export default class MostViewed extends React.Component {
                     </Col>
                 </Row>
                 <hr/>
+                <p className="boutiques-p-padding">Les articles les plus populaires :</p>
                 <Row>
                     {
                         this.state.articles.map((x, i) => (
@@ -102,7 +103,20 @@ export default class MostViewed extends React.Component {
                                         <Card.Footer>
                                             <Row>
                                                 <Col>
-                                                    <h4>{`${x.price}€`}</h4>
+                                                    {x.sale === 0 && <h4>{`${x.price}€`}</h4>}
+                                                    {x.sale !== 0 && <>
+                                                        <h4 >
+                                                            <a style={{
+                                                                textDecoration: "line-through",
+                                                                textDecorationColor: "red"
+                                                            }}>{`${x.price}€`}</a>
+                                                            <a className={"text-success"}>{` -${x.sale}%`}</a>
+                                                        </h4>
+                                                        <h3 className={"text-success"}>
+                                                            {`${x.price - (x.price  * (x.sale / 100))}€`}
+                                                        </h3>
+                                                    </>
+                                                    }
                                                 </Col>
                                                 <Col>
                                                     <Link to={`/article/${x.id}`}>

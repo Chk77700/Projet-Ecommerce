@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../css/font.css";
+import {Row} from "react-bootstrap";
 
 export default class Footer extends Component {
     render () {

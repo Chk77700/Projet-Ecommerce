@@ -128,7 +128,7 @@ export default class Modify extends React.Component {
                         <Col>
                             <Row>
                                 <Col>
-                                    Pourcentage de rectuction:
+                                    Pourcentage de reduction:
                                 </Col>
                                 <Col>
                                     <Form.Control as="select" onChange={(e) => this.modifySale(e)} custom>

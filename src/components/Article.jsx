@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
+import {Badge, Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import Axios from "axios";
 import Blink from 'react-blink-text';
 
@@ -56,6 +56,11 @@ export default class Article extends React.Component {
                                         {x.sale !== 0 && <Blink color='#E7751F' text='En solde!' style={{fontSize: 25}}/>}
                                         <Card.Img style={style.boutique} variant="top"
                                                   src={`http://localhost:8000${x.photo}`}/>
+                                        {x.categorie.map((y, j) => (<h3>
+                                            <Badge variant="ecommerce4" value={y.id}>
+                                                {y.name}
+                                            </Badge>{' '}
+                                        </h3>))}
                                     </Col>
                                     <Col>
                                         {new Date().getTime() - Date.parse(x.date) < 604800000 && <Blink color='#E7751F' text='Nouveaute!' style={{fontSize: 25}}/>}

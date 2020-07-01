@@ -125,7 +125,8 @@ export default class Header extends React.Component {
                                                 annonce</NavDropdown.Item>
                                         </Link>
                                         <Link to={"/createCategorie"}>
-                                            <NavDropdown.Item href="#categorie">Categorie</NavDropdown.Item>
+                                            <NavDropdown.Item href="#categorie" className={"text-ecommerce4"}>Creer une
+                                                categorie</NavDropdown.Item>
                                         </Link>
                                     </NavDropdown>
                                 }

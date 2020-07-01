@@ -91,20 +91,18 @@ export default class Boutiques extends React.Component {
                             <>
                                 <Col lg={4} sm={12} md={6}>
                                     <Card key={i} style={style.boutique} onClick={(e) => this.changeShop(e, i)}>
-                                        <Card.Img value={i} variant="top" src={`http://localhost:8000${x.photo}`}/>
+                                         <Card.Img value={i} variant="top" src={`http://localhost:8000${x.photo}`}/>
                                         <Card.Body>
                                             <Card.Text className="text-ecommerce2">
-                                                <h3>{x.username}</h3>
-                                                <h5>
-                                                    {x.covid && <Badge variant={"ecommerce1"}>Covid</Badge>}
-                                                    {x.urgences && <Badge variant={"ecommerce1"}>Urgences</Badge>}
-                                                </h5>
+                                                <h5 className={"text-ecommerce4"}>{x.username}</h5>
+                                                <p>Nombre d'article: {x.count}</p>
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
                                     <br/>
                                 </Col>
                             </>
+
                         ))
                     }
                 </Row>
@@ -137,11 +135,29 @@ export default class Boutiques extends React.Component {
                                                     <h3 className="text-ecommerce2">{x.name}</h3>
                                                     {x.description}
                                                 </Card.Text>
+                                                    {x.categorie.map((y, j) => (<>
+                                                        <Badge variant="ecommerce4" value={y.id}>
+                                                            {y.name}
+                                                        </Badge>{' '}
+                                                    </>))}
                                             </Card.Body>
                                             <Card.Footer>
                                                 <Row>
                                                     <Col>
-                                                        <h4>{`${x.price}€`}</h4>
+                                                        {x.sale === 0 && <h4>{`${x.price}€`}</h4>}
+                                                        {x.sale !== 0 && <>
+                                                            <h4 >
+                                                                <a style={{
+                                                                    textDecoration: "line-through",
+                                                                    textDecorationColor: "red"
+                                                                }}>{`${x.price}€`}</a>
+                                                                <a className={"text-success"}>{` -${x.sale}%`}</a>
+                                                            </h4>
+                                                            <h3 className={"text-success"}>
+                                                                {`${x.price - (x.price  * (x.sale / 100))}€`}
+                                                            </h3>
+                                                        </>
+                                                        }
                                                     </Col>
                                                     <Col>
                                                         <Link to={`/article/${x.id}`}>
