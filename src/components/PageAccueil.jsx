@@ -29,7 +29,7 @@ export default class PageAccueil extends Component {
             <div>
                 <main>
                     <div className="main-pageaccueil">
-                        <video style={{width: "100%", height: "50%", position: "absolute", marginTop: "-50px"}} loop autoPlay>
+                        <video style={{width: "100%", height: "30%", position: "absolute", marginTop: "-50px"}} loop autoPlay>
                             <source src={require("../videos/Slide1.mp4")} type="video/mp4"/>
                         </video>
                         <div className="container">

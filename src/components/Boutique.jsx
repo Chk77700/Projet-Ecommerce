@@ -100,7 +100,7 @@ export default class Boutique extends React.Component {
                             <Col lg={4} sm={12} md={6}>
                                 <Card key={i}>
                                     <Card.Img style={style.boutique} variant="top"
-                                              src={`http://localhost:8000${x.photo}`}/>
+                                              src={`http://localhost:8000${x.photo}`} className="taille-image-boutique"/>
                                     <Card.Body>
                                         {new Date().getTime() - Date.parse(x.date) < 604800000 && <h3 className={"text-ecommerce4"}>
                                             Nouveaute!
